@@ -1,0 +1,14 @@
+npm .npmrc
+*.gitkeep
+node_modules/
+build/
+*.idea
+*.iml
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+npm-debug.log
+development/routes.dev.js
