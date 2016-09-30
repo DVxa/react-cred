@@ -11,7 +11,7 @@ export default class LoginPopupForm extends Component {
     }
     render () {
         return (
-            <form className="text-center validatable" id="loginForm">
+            <div className="text-center validatable" id="loginForm">
                 <div className="row">
                     <div className="col-xs-10 field  col-xs-offset-2">
                         <input type="text" placeholder="Логин" name="username" />
@@ -37,7 +37,7 @@ export default class LoginPopupForm extends Component {
                         <Link to="/remind-password" className="gray-link">Забыли логин или пароль?</Link>
                     </div>
                 </div>
-            </form>
+            </div>
         )
     }
 }
