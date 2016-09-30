@@ -3,7 +3,11 @@
  */
 import React, {Component} from 'react';
 
-export default class LoginPoputForm extends Component {
+export default class LoginPopupForm extends Component {
+    constructor () {
+        super ();
+        this.loginHandler   = this.loginHandler.bind(this);
+    }
     render () {
         return (
             <form className="text-center validatable" id="loginForm">
@@ -23,7 +27,7 @@ export default class LoginPoputForm extends Component {
 
                 <div className="row">
                     <div className="col-xs-10 col-xs-offset-2">
-                        <button className="btn btn-blue">Войти</button>
+                        <button className="btn btn-blue" onClick={this.loginHandler}>Войти</button>
                     </div>
                 </div>
 

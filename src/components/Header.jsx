@@ -15,7 +15,7 @@ const customStyles = {
         bottom          : 'auto',
         marginRight     : '-50%',
         transform       : 'translate(-50%, -50%)',
-        width           : '500px',
+        width           : '400px',
         background      : '#ededed'
     }
 };
@@ -28,16 +28,12 @@ export class Header extends Component {
         };
         this.openModal      = this.openModal.bind(this);
         this.closeModal     = this.closeModal.bind(this);
-        this.loginHandler   = this.loginHandler.bind(this);
     }
     openModal () {
         this.setState({modalIsOpen: true});
     }
     closeModal () {
         this.setState({modalIsOpen: false});
-    }
-    loginHandler() {
-        console.log('Login click');
     }
     render() {
         return (
@@ -64,8 +60,8 @@ export class Header extends Component {
                     <div className="fgr-popup__login-form gray-layout clearfix">
                         <div className="row">
                             <div className="col-xs-12 col-xs-offset-1">
-                                <p>Впервые пользуетесь услугами нашего сервиса? Пожалуйста, <a
-                                    href="registration/lender/step1.html">ЗАРЕГИСТРИРУЙТЕСЬ</a></p>
+                                <p>Впервые пользуетесь услугами нашего сервиса? Пожалуйста, <Link
+                                    to="/registration">ЗАРЕГИСТРИРУЙТЕСЬ</Link></p>
                                 <p>Если вы уже пользовались нашими услугами, пожалуйста, авторизуйтесь:</p>
                             </div>
                         </div>

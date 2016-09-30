@@ -9,12 +9,16 @@ module.exports = {
     path: path.resolve(__dirname, "build"),
     filename: 'bundle.js'
   },
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
   ],
   module: {
     loaders: [{
-      test: /\.js$/,
+      test: /\.jsx?$/,
+      presets: ['es2015', 'react'],
       loader: 'babel',
       include: path.join(__dirname, 'src'),
 	  publicPath: 'build'
