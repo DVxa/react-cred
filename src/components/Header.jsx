@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import Modal from 'react-modal';
 import MainMenu from './MainMenu';
+import LoginPopupForm from './LoginPopupForm';
 
 const customStyles = {
     content : {
@@ -68,33 +69,7 @@ export class Header extends Component {
                                 <p>Если вы уже пользовались нашими услугами, пожалуйста, авторизуйтесь:</p>
                             </div>
                         </div>
-                        <form className="text-center validatable" id="loginForm">
-                            <div className="row">
-                                <div className="col-xs-10 field  col-xs-offset-2">
-                                    <input type="text" placeholder="Логин" name="username" />
-                                        <div className="error-message-box"></div>
-                                </div>
-                            </div>
-
-                            <div className="row">
-                                <div className="col-xs-10 field  col-xs-offset-2">
-                                    <input type="password" placeholder="Пароль" name="password" />
-                                        <div className="error-message-box"></div>
-                                </div>
-                            </div>
-
-                            <div className="row">
-                                <div className="col-xs-10 col-xs-offset-2">
-                                    <button className="btn btn-blue">Войти</button>
-                                </div>
-                            </div>
-
-                            <div className="row">
-                                <div className="col-xs-10 col-xs-offset-2">
-                                    <Link to="/remind-password" className="gray-link">Забыли логин или пароль?</Link>
-                                </div>
-                            </div>
-                        </form>
+                        <LoginPopupForm />
                     </div>
                     <div className="col-xs-12 col-xs-offset-1 clearfix">&nbsp;</div>
                     <a className="fgr-popup__close" href="#" onClick={this.closeModal}>
