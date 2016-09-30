@@ -4,7 +4,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import Modal from 'react-modal';
-import MainMenu from '../elements/MainMenu';
+import MainMenu from './MainMenu';
 
 const customStyles = {
     content : {
