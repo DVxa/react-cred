@@ -1,12 +1,13 @@
-/**
- * Created by V.Minyailov-book on 30.09.2016.
- */
 import React, {Component} from 'react';
+import { Link } from "react-router";
 
 export default class LoginPopupForm extends Component {
     constructor () {
         super ();
-        this.loginHandler   = this.loginHandler.bind(this);
+        this.loginHandler = this.loginHandler.bind(this);
+    }
+    loginHandler () {
+        console.log("Login");
     }
     render () {
         return (

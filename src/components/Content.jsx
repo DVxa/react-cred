@@ -6,7 +6,7 @@ export default class Content extends Component {
         return (
             <main className="content">
                 <div className="content__first-block green-layout"></div>
-                <ContentHeader />
+                <ContentHeader title={this.props.title}/>
             </main>
         )
     }

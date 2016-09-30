@@ -5,10 +5,10 @@ import Content from "../components/Content";
 export default class About extends Component {
     render() {
         return (
-            <header className="header">
+            <div>
                 <Header />
                 <Content title="О проекте"/>
-            </header>
+            </div>
         );
     }
 }

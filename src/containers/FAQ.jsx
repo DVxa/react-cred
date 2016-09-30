@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import { Header } from '../components/Header';
+import Content from '../components/Content';
 
 export default class FAQ extends Component {
     render() {
         return (
-            <header className="header">
+            <div>
                 <Header />
-                <h1>Вопрос-Ответ</h1>
-            </header>
+                <Content title="Вопрос-Ответ"/>
+            </div>
         );
     }
 }
-/**
- * Created by V.Minyailov-book on 29.09.2016.
- */
