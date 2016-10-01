@@ -51,7 +51,8 @@ export class Header extends Component {
                     <Modal
                         isOpen={this.state.modalIsOpen}
                         onRequestClose={this.closeModal}
-                        style={customStyles} >
+                        style={customStyles}
+                    >
 
                         {/*<button onClick={this.closeModal}>close</button>*/}
                         <h4 className="text-center">Вход в личный кабинет</h4>

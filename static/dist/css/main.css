@@ -10133,7 +10133,7 @@ form .button-container {
   margin-right: 10px;
 }
 .footer .wrapper .contacts-block .contacts-time {
-  font-size: 20px;
+  font-size: 16px;
   color: #ffffff !important;
 }
 .footer .wrapper .copyright {
@@ -10143,9 +10143,10 @@ form .button-container {
 .footer .wrapper .copyright .mail-link {
   color: #ffffff;
   text-decoration: none;
-  border-bottom: 1px solid #80cac8;
+  border-bottom: 1px solid white;
   line-height: 1;
   display: inline-block;
+    font-size: 14px;
 }
 .footer .wrapper .copyright .mail-link:hover {
   border-bottom: 1px solid #ffffff;
