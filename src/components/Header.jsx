@@ -59,7 +59,7 @@ export class Header extends Component {
                             <div className="row">
                                 <div className="col-xs-12 col-xs-offset-1">
                                     <p>Впервые пользуетесь услугами нашего сервиса? Пожалуйста, <Link
-                                        to="/registration">ЗАРЕГИСТРИРУЙТЕСЬ</Link></p>
+                                        to="/register">ЗАРЕГИСТРИРУЙТЕСЬ</Link></p>
                                     <p>Если вы уже пользовались нашими услугами, пожалуйста, авторизуйтесь:</p>
                                 </div>
                             </div>

@@ -9726,8 +9726,8 @@ html, body {
 .footer {
   min-width: 1012px;
   max-width: 2500px;
-  margin: -135px auto 0;
-  height: 135px;
+  margin: -160px auto 0;
+  height: 160px;
   position: relative;
   background: #4CAF50;
   color: #fff !important;
@@ -10067,7 +10067,7 @@ form .button-container {
 }
 
 .footer {
-  z-index: 100;
+  /*z-index: 100;*/
 }
 .footer .wrapper {
   padding-top: 50px;
