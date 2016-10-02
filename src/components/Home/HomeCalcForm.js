@@ -21,7 +21,7 @@ export default class HomeCalcForm extends Component {
                                     <Scroller name="summa" curValue="3000" minValue="1000" maxValue="50000" step="100"/>
                                 </div>
                                 <div className="formatted col-xs-3 scroller__input">
-                                    <input type="text" data-a-sep=" " data-a-dec="," data-v-min="0" data-v-max="99999" value="3000" className="full-width" />
+                                    <input type="text" data-a-sep=" " data-a-dec="," data-v-min="0" data-v-max="99999" className="full-width" />
                                 </div>
                                 <div className="col-xs-3 scroller__measure">руб.</div>
                             </div>
@@ -31,10 +31,10 @@ export default class HomeCalcForm extends Component {
                             <div className="col-xs-4 caption scroller__text">Срок заявки</div>
                             <div className="col-xs-10 input-group field scroller id673">
                                 <div className="col-xs-8 scroller__body">
-                                    <Scroller name="period" curValue="30" minValue="1" maxValue="48" step="1"/>
+                                    <Scroller name="period" curVal="30" minVal="1" maxValue="48" step="1"/>
                                 </div>
                                 <div className="formatted col-xs-3 scroller__input">
-                                    <input type="text" data-a-sep=" " data-a-dec="," data-v-min="0" data-v-max="99" value="30" className="full-width" />
+                                    <input type="text" data-a-sep=" " data-a-dec="," data-v-min="0" data-v-max="99"  className="full-width" />
                                 </div>
                                 <div className="col-xs-3 scroller__measure">дней</div>
                             </div>
@@ -47,7 +47,7 @@ export default class HomeCalcForm extends Component {
                                     <Scroller  name="percent" curValue="0.2" minValue="0" maxValue="2.0" step="0.1"/>
                                 </div>
                                 <div className="formatted col-xs-3 scroller__input">
-                                    <input type="text" data-a-sep=" " data-a-dec="," data-v-min="0" data-v-max="9.9" value="2.0" className="full-width" />
+                                    <input type="text" data-a-sep=" " data-a-dec="," data-v-min="0" data-v-max="9.9" className="full-width" />
                                 </div>
                                 <div className="col-xs-3 scroller__measure">% в день</div>
                             </div>

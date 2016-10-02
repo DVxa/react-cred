@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Header } from '../components/Header';
-import Content from '../components/Content';
 import Footer from "../components/Footer";
 import HomeContent from '../components/Home/HomeContent';
+import HomeAbout from '../components/Home/HomeAbout';
 
 
 export default class Home extends Component {
@@ -11,8 +11,8 @@ export default class Home extends Component {
             <div>
                 <Header />
                 <main className="content">
-                    <Content title="Главная"/>
                     <HomeContent />
+                    <HomeAbout />
                 </main>
                 <Footer />
             </div>

@@ -13,7 +13,8 @@ export default class Scroller extends Component {
                         <div className="slider-handle max-slider-handle round hide" tabindex="0"></div>
                     </div>
                     <div className="tooltip tooltip-main top hide" >
-                        <div className="tooltip-arrow"></div><div className="tooltip-inner">{this.props.maxValue}</div>
+                        <div className="tooltip-arrow"></div>
+                        <div className="tooltip-inner">{this.props.maxValue}</div>
                     </div>
                     <div className="tooltip tooltip-min top hide">
                         <div className="tooltip-arrow"></div>
@@ -31,7 +32,7 @@ export default class Scroller extends Component {
                         data-slider-max='{this.props.maxValue}'
                         data-slider-step='{this.props.step}'
                         data-slider-value='{this.props.curValue}'
-                        style="display: none;"
+                        style={{display: 'none'}}
                         data="value: '{this.props.curValue}'"
                         />
                 <span className="scroller__body__line__from">{this.props.minValue}</span>
