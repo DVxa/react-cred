@@ -7,7 +7,8 @@ module.exports = {
   ],
   output: {
     path: path.resolve(__dirname, "build"),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: 'build'
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
@@ -20,8 +21,7 @@ module.exports = {
       test: /\.jsx?$/,
       presets: ['es2015', 'react'],
       loader: 'babel',
-      include: path.join(__dirname, 'src'),
-	  publicPath: 'build'
+      include: path.join(__dirname, 'src')
     }]
   }
 };
