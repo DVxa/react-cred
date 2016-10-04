@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 export default class RegisterForm extends Component {
     constructor(props) {
         super(props);
-        this.handlerRegister = this.handlerRegister.bind(this);
+        this.btnRegisterHandler = this.btnRegisterHandler.bind(this);
         this.onEmailChangeHandler = this.onEmailChangeHandler.bind(this);
 
         this.state = {
@@ -14,8 +14,8 @@ export default class RegisterForm extends Component {
         };
     }
 
-    handlerRegister() {
-        console.log('RegisterButton - click', this.state);
+    btnRegisterHandler() {
+        console.log('btnRegisterHandler - clickfff', this.state);
     }
 
     onEmailChangeHandler(event) {
@@ -69,7 +69,7 @@ export default class RegisterForm extends Component {
                     <div className="col-xs-offset-7 col-xs-8 button-container">
                         <button className="btn btn-blue btn-big confirm-code-disabled"
                                 type="button"
-                                onClick={this.handlerRegister}
+                                onClick={this.btnRegisterHandler}
                         >Зарегистрироваться</button>
                     </div>
                     <div className="col-xs-4"></div>

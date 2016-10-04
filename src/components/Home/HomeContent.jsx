@@ -1,7 +1,16 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router';
+import Paper from 'material-ui/Paper';
+import Divider from 'material-ui/Divider';
+import { Step, Stepper, StepLabel} from 'material-ui/Stepper';
+
 import HomeOffesrLoan from './HomeOffesrLoan';
 import HomeCalcForm from './HomeCalcForm';
+
+
+const stepperStyles = {
+    fontSize: '20px'
+};
 
 export default class HomeContent extends Component {
     render() {
@@ -24,38 +33,25 @@ export default class HomeContent extends Component {
                                 </span>
                             </li>
                         </ul>
-
-                        <div className="role-box">
-                            <div className="role-box__box visible">
-                                <div className="role-box__box__get-money-block clearfix">
-                                    <div className="role-box__box__get-money-block__wrapper full-width">
-                                        <div className="steps clearfix steps4 ">
-                                            <div className="steps__status"></div>
-                                            <div className="step current">
-                                                <span>1</span>
-                                                <p>Просмотрите предложения</p>
-                                            </div>
-                                            <div className="step ">
-                                                <span>2</span>
-                                                <p>Заполните заявку</p>
-                                            </div>
-                                            <div className="step ">
-                                                <span>3</span>
-                                                <p>Заполните анкету</p>
-                                            </div>
-                                            <div className="step ">
-                                                <span>4</span>
-                                                <p>Получите деньги</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <HomeCalcForm />
-                                    <div className="role-box__box__get-money-block clearfix">
-                                        <HomeOffesrLoan url="" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <Paper zDepth={2}>
+                            <Stepper activeStep={1}>
+                                <Step>
+                                    <StepLabel style={stepperStyles}>Заполните заявку</StepLabel>
+                                </Step>
+                                <Step>
+                                    <StepLabel style={stepperStyles}>Рассмотрите предложения</StepLabel>
+                                </Step>
+                                <Step>
+                                    <StepLabel style={stepperStyles}>Заполните анкету</StepLabel>
+                                </Step>
+                                <Step>
+                                    <StepLabel style={stepperStyles}>Получите деньги</StepLabel>
+                                </Step>
+                            </Stepper>
+                            <HomeCalcForm />
+                            <Divider />
+                            <HomeOffesrLoan />
+                        </Paper>
                     </div>
                 </div>
                 <div className="white-layout clearfix dealings">

@@ -1,13 +1,59 @@
 import React, {Component} from 'react';
-import Scroller from './Scroller';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
+import Slider from 'material-ui/Slider';
+
+import Sliders from './Sliders';
+
+const textStyles = {
+    fontSize: '24px',
+    width: '100%'
+};
+
+const sliderStyle = {
+    height: '24px',
+    marginTop: '6px',
+    marginBottom: '6px',
+    fontSize: '18px'
+};
+
+const divCalcBlock = {
+    margin: '0 30px'
+};
 
 export default class HomeCalcForm extends Component {
-    constructor(props) {
+    constructor (props) {
         super(props);
-        this.handlerCreateOffer = this.handlerCreateOffer.bind(this);
+        this.onChangeAmountHandler = this.onChangeAmountHandler.bind(this);
+        this.onChangePeriodHandler = this.onChangePeriodHandler.bind(this);
+        this.onChangeRateHandler   = this.onChangeRateHandler.bind(this);
+        this.btnCreateOfferHandler = this.btnCreateOfferHandler.bind(this);
+        this.state = {
+            amountValue : 5000,
+            periodValue : 14,
+            rateValue   : 0.2,
+            backAmountValue: 0
+        };
     }
-    handlerCreateOffer() {
-        console.log('this.handlerCreateOffer - click');
+    onChangeAmountHandler (event, value) {
+        if (value < 3000) {
+            this.setState({amountValue: 3000});
+        } else {
+            if (value > 50000) {
+                this.setState({amountValue: 50000});
+            } else {
+                this.setState({amountValue: value});
+            }
+        }
+    }
+    onChangePeriodHandler (event, value) {
+        this.setState({periodValue: value > 48 ? 48: value});
+    }
+    onChangeRateHandler (event, value) {
+        this.setState({rateValue: value > 2 ? 2 : value});
+    }
+    btnCreateOfferHandler() {
+        console.log('this.btnCreateOfferHandler - click');
     }
     render() {
         return (
@@ -15,30 +61,112 @@ export default class HomeCalcForm extends Component {
                 <div className="calculator clearfix">
                     <div className="scrollers">
                         <i className="triangle-icon"></i>
-                        <Scroller name="Сумма"  inputName="data.amount" curValue="3000" minValue="1000" maxValue="50000" mask="999999"  step="100"  unit="руб."      />
-                        <Scroller name="Срок"   inputName="data.period" curValue="30"   minVal="1"      maxValue="48"    mask="999"     step="1"    unit="дней"      />
-                        <Scroller name="Ставка" inputName="data.rate"   curValue="0.2"  minValue="0"    maxValue="2.0"   mask="9.99"    step="0.05" unit="% в день"  />
+                        <div className="scroller clearfix">
+                            <div className="col-xs-11 scroller__body">
+                                <Slider style={sliderStyle}
+                                        min={3000}
+                                        max={50000}
+                                        step={500}
+                                        defaultValue={5000}
+                                        description="Сумма заявки"
+                                        value={this.state.amountValue}
+                                        onChange={this.onChangeAmountHandler}
+                                />
+                                {/*<span className="scroller__body__line__from">{this.props.minValue}</span>
+                                 <span className="scroller__body__line__to">{this.props.maxValue}</span>*/}
+                            </div>
+                            <div className="col-xs-2 scroller__input">
+                                <TextField
+                                    style={{padding: '3px', width: '100%'}}
+                                    value={this.state.amountValue}
+                                    floatingLabelText="рублей"
+                                    floatingLabelFixed={true}
+                                    onChange={this.onChangeAmountHandler}
+                                />
+                            </div>
+                        </div>
+                        <div className="scroller clearfix">
+                            <div className="col-xs-11 scroller__body">
+                                <Slider style={sliderStyle}
+                                        min={1}
+                                        max={48}
+                                        step={1}
+                                        defaultValue={14}
+                                        description="Период заявки"
+                                        value={this.state.periodValue}
+                                        onChange={this.onChangePeriodHandler}
+                                />
+                            </div>
+                            <div className="col-xs-2 scroller__input">
+                                <TextField
+                                    style={{padding: '3px', width: '100%'}}
+                                    value={this.state.periodValue}
+                                    floatingLabelText="дней"
+                                    floatingLabelFixed={true}
+                                    onChange={this.onChangePeriodHandler}
+                                />
+                            </div>
+                        </div>
+                        <div className="scroller clearfix">
+                            <div className="col-xs-11 scroller__body">
+                                <Slider style={sliderStyle}
+                                        min={0}
+                                        max={2.0}
+                                        step={0.15}
+                                        defaultValue={0.2}
+                                        description="Ставка"
+                                        value={this.state.rateValue}
+                                        onChange={this.onChangeRateHandler}
+                                />
+                            </div>
+                            <div className="col-xs-2 scroller__input">
+                                <TextField
+                                    style={{padding: '3px', width: '100%'}}
+                                    value={this.state.rateValue}
+                                    floatingLabelText="рублей"
+                                    floatingLabelFixed={true}
+                                    onChange={this.onChangeRateHandler}
+                                />
+                            </div>
+                        </div>
                     </div>
                     <div className="calculator-result">
-                        <div className="calculator-result__item-block">
-                            <div className="calculator-result__item-block__text">Возьмёте:</div>
-                            <span className="formatted" data-a-sep=" " data-v-min="0"
-                                  data-v-max="999999999999999999">0</span>
-                            руб.
-                        </div>
+                        <div style={divCalcBlock}>
+                            <div className="col-xs-12">
+                                <TextField
+                                    style={textStyles}
+                                    value={this.state.amountValue}
+                                    floatingLabelText="Возьмете:"
+                                    floatingLabelFixed={true}
+                                />
+                            </div>
 
-                        <div className="calculator-result__item-block">
-                            <div className="calculator-result__item-block__text">До:</div>
-                            <span date-format="dd.MM.yyyy"></span>
                         </div>
-
-                        <div className="calculator-result__item-block">
-                            <div className="calculator-result__item-block__text">Отдадите:</div>
-                            <span className="formatted" data-a-sep=" " data-a-dec="," data-v-min="0.00"
-                                  data-v-max="999999999999999999.99">0</span>
-                            руб.
+                        <div style={divCalcBlock}>
+                            <div className="col-xs-12">
+                                <TextField
+                                    style={textStyles}
+                                    value='01/12/2016'
+                                    floatingLabelText="До:"
+                                    floatingLabelFixed={true}
+                                />
+                            </div>
                         </div>
-                        <button className="btn" type="submit">Подать заявку</button>
+                        <div style={divCalcBlock}>
+                            <div className="col-xs-12">
+                                <TextField
+                                    style={textStyles}
+                                    value={this.state.backAmountValue}
+                                    floatingLabelText="Отдадите:"
+                                    floatingLabelFixed={true}
+                                />
+                            </div>
+                        </div>
+                        <div style={divCalcBlock}>
+                            <div className="col-xs-12">
+                                <RaisedButton secondary={true} label='Подать заявку' onClick={this.btnCreateOfferHandler} />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </form>
