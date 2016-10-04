@@ -2,13 +2,26 @@ import React, {Component} from 'react';
 import { Link } from 'react-router';
 
 export default class RegisterForm extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.handlerRegister = this.handlerRegister.bind(this);
+        this.onEmailChangeHandler = this.onEmailChangeHandler.bind(this);
+
+        this.state = {
+            email: '',
+            password: '',
+            passwordRepeat: '',
+        };
     }
+
     handlerRegister() {
-        console.log('RegisterButton - click');
+        console.log('RegisterButton - click', this.state);
     }
+
+    onEmailChangeHandler(event) {
+        this.setState({email: event.target.value});
+    }
+
     render() {
         return (
             <form method="post" id="data" className="validatable">
@@ -17,7 +30,13 @@ export default class RegisterForm extends Component {
                 <div className="row">
                     <div className="col-xs-4 caption ">Email<span>*</span></div>
                     <div className="col-xs-10 field  ">
-                        <input type="text" placeholder="пример: ivanov@gmail.com" name="email" />
+                        <input
+                            type="text"
+                            placeholder="пример: ivanov@gmail.com"
+                            name="email"
+                            onChange={this.onEmailChangeHandler}
+                            value={this.state.email}
+                        />
                         <div className="error-message-box"></div>
                     </div>
                 </div>
