@@ -3,6 +3,12 @@
  */
 
 import React, { Component, PropTypes } from 'react';
+import TextField from 'material-ui/TextField';
+
+const textStyles = {
+    width: '100%',
+    fontSize: '18px'
+};
 
 export default class EmailInput extends Component {
 
@@ -33,8 +39,18 @@ export default class EmailInput extends Component {
     render() {
         return (
             <div className="row">
-                <div className="col-xs-4 caption ">Email<span>*</span></div>
-                <div className="col-xs-10 field  ">
+                <div className="col-xs-14 field  ">
+                    <TextField
+                        style={textStyles}
+                        type="text"
+                        name="email"
+                        errorText={!this.state.valid && this.state.dirty && <div>Введите корректный e-mail</div>}
+                        hintText="Email"
+                        floatingLabelText="Email"
+                        value={this.state.value}
+                        onChange={this.onValueChangeHandler}
+                    />
+                    {/*
                     <input
                         type="text"
                         placeholder="пример: ivanov@gmail.com"
@@ -42,7 +58,8 @@ export default class EmailInput extends Component {
                         onChange={this.onValueChangeHandler}
                         value={this.props.value}
                     />
-                    {!this.state.valid && this.state.dirty && <div>Введите корректный e-mail</div>}
+
+                    */}
                 </div>
             </div>
         )

@@ -1,6 +1,14 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router';
 import EmailInput from './EmailInput';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
+
+const textStyles = {
+    width: '100%',
+    fontSize: '18px'
+};
+
 
 export default class RegistrationForm extends Component {
     constructor(props) {
@@ -40,11 +48,14 @@ export default class RegistrationForm extends Component {
                 <input type="hidden" name="leadId" value="0" />
                 <EmailInput value={this.state.email} onChange={this.onEmailChangeHandler}/>
                 <div className="row">
-                    <div className="col-xs-4 caption ">Пароль<span>*</span></div>
-                    <div className="col-xs-10 field  ">
-                        <input
+                    <div className="col-xs-14 field  ">
+                        <TextField
+                            style={textStyles}
                             type="password"
                             name="password"
+                            errorText="Поле не должно быть пустым"
+                            hintText="Пароль"
+                            floatingLabelText="Пароль"
                             value={this.state.password}
                             onChange={this.onPasswordChangeHandler}
                         />
@@ -52,11 +63,14 @@ export default class RegistrationForm extends Component {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-xs-4 caption ">Пароль еще раз<span>*</span></div>
-                    <div className="col-xs-10 field  ">
-                        <input
+                    <div className="col-xs-14 field  ">
+                        <TextField
+                            style={textStyles}
                             type="password"
-                            name="password2"
+                            name="password"
+                            errorText="Поле не должно быть пустым"
+                            hintText="Пароль еще раз"
+                            floatingLabelText="Пароль еще раз"
                             value={this.state.passwordRepeat}
                             onChange={this.onPasswordRepeatChangeHandler}
                         />
@@ -76,10 +90,11 @@ export default class RegistrationForm extends Component {
 
                 <div className="row">
                     <div className="col-xs-offset-7 col-xs-8 button-container">
-                        <button className="btn btn-blue btn-big confirm-code-disabled"
-                                type="button"
-                                onClick={this.btnRegisterHandler}
-                        >Зарегистрироваться</button>
+                        <RaisedButton
+                            label="Зарегистрироваться"
+                            onClick={this.btnRegisterHandler}
+                            secondary={true}
+                        />
                     </div>
                     <div className="col-xs-4"></div>
                 </div>

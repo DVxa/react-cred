@@ -13,19 +13,20 @@ export default class Footer extends Component {
                         </div>*/}
 
                         <div className="col-xs-4 copyright">
-                            <div>© 2016 Касса взаимопомощи</div>
-                            <a href="mailto:info-cred-cach@mail.ca.cbrf.ru" className="mail-link">info-cred-cach@mail.ca.cbrf.ru</a>
+                            &nbsp;
                         </div>
 
                         <div className="col-xs-6 footer-central-block">
-                            <i className="logo-white"></i>
+                            <p>© 2016 Касса взаимопомощи</p>
+                            <p><a href="mailto:info-cred-cach@mail.ca.cbrf.ru">info-cred-cach@mail.ca.cbrf.ru</a></p>
+                            <p>
+                                <strong><i className="phone-img-white"></i>8 (800) 600-0101</strong>
+                                <span>С Понедельника по Пятницу с 9-00 до 19-00</span>
+                            </p>
                         </div>
 
                         <div className="col-xs-4">
-                            <div className="contacts-block">
-                                <i className="phone-img-white"></i>8 (800) 600-0101
-                                <div className="contacts-time">С Понедельника по Пятницу с 9-00 до 19-00</div>
-                            </div>
+                            &nbsp;
                         </div>
                     </div>
                 </div>

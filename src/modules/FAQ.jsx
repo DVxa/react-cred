@@ -1,32 +1,33 @@
 import React, { Component } from 'react';
-import { green500, orange500 } from 'material-ui/styles/colors';
+
+import {green500} from 'material-ui/styles/colors';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-import { Header } from '../components/Header';
-import Footer from "../components/Footer";
-import HomeContent from '../components/Home/HomeContent';
-import HomeAbout from '../components/Home/HomeAbout';
-
+import { Header } from '../commons/Header';
+import Content from '../commons/Content';
+import TabsFAQ from './FAQ/TabsFAQ';
 
 const muiTheme = getMuiTheme({
     palette: {
         primary1Color: green500,
-        accent1Color: orange500
     }
 });
 
-export default class Home extends Component {
+export default class FAQ extends Component {
     render() {
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
                 <div>
                     <Header />
                     <main className="content">
-                        <HomeContent />
-                        <HomeAbout />
+                        <Content title="Вопрос-Ответ"/>
+                        <div className="wrapper">
+                            <div className="row">
+                                <TabsFAQ />
+                            </div>
+                        </div>
                     </main>
-                    <Footer />
                 </div>
             </MuiThemeProvider>
         );
