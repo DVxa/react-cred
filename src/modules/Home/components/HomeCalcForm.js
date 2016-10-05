@@ -28,12 +28,19 @@ export default class HomeCalcForm extends Component {
         this.onChangePeriodHandler = this.onChangePeriodHandler.bind(this);
         this.onChangeRateHandler   = this.onChangeRateHandler.bind(this);
         this.btnCreateOfferHandler = this.btnCreateOfferHandler.bind(this);
+        this.onChangeCalcElems     = this.onChangeCalcElems.bind(this);
         this.state = {
             amountValue : 5000,
             periodValue : 14,
             rateValue   : 0.2,
-            backAmountValue: 0
+            backAmountValue: 5000 + (5000 * 0.2/100 * 14),
+            backDate    : '01.01.2017'
         };
+    }
+    onChangeCalcElems() {
+        var backAmount = this.state.amountValue +
+            (this.state.amountValue * this.state.rateValue/100 * this.state.periodValue);
+        this.setState({backAmountValue: backAmount});
     }
     onChangeAmountHandler (event, value) {
         if (value < 3000) {
@@ -45,19 +52,31 @@ export default class HomeCalcForm extends Component {
                 this.setState({amountValue: value});
             }
         }
+        this.onChangeCalcElems();
     }
     onChangePeriodHandler (event, value) {
         this.setState({periodValue: value > 48 ? 48: value});
+        var dateToday = new Date();
+        dateToday.setDate(dateToday.getDate() + value);
+        this.setState({
+            backDate:
+            ('0' + dateToday.getDate()).slice(-2) + '.' +
+            ('0' + (dateToday.getMonth()+1)).slice(-2) + '.' +
+            dateToday.getFullYear()
+        });
+        this.onChangeCalcElems();
     }
     onChangeRateHandler (event, value) {
         this.setState({rateValue: value > 2 ? 2 : value});
+        this.onChangeCalcElems();
+
     }
     btnCreateOfferHandler() {
         console.log('this.btnCreateOfferHandler - click');
     }
     render() {
         return (
-            <form>
+            <div>
                 <div className="calculator clearfix">
                     <div className="scrollers">
                         <i className="triangle-icon"></i>
@@ -67,6 +86,7 @@ export default class HomeCalcForm extends Component {
                                         min={3000}
                                         max={50000}
                                         step={500}
+                                        sliderStyle={{marginBottom: '16px', marginTop: '8px'}}
                                         defaultValue={5000}
                                         description="Сумма заявки"
                                         value={this.state.amountValue}
@@ -91,6 +111,7 @@ export default class HomeCalcForm extends Component {
                                         min={1}
                                         max={48}
                                         step={1}
+                                        sliderStyle={{marginBottom: '16px', marginTop: '8px'}}
                                         defaultValue={14}
                                         description="Период заявки"
                                         value={this.state.periodValue}
@@ -112,7 +133,8 @@ export default class HomeCalcForm extends Component {
                                 <Slider style={sliderStyle}
                                         min={0}
                                         max={2.0}
-                                        step={0.15}
+                                        step={0.05}
+                                        sliderStyle={{marginBottom: '16px', marginTop: '8px'}}
                                         defaultValue={0.2}
                                         description="Ставка"
                                         value={this.state.rateValue}
@@ -146,7 +168,7 @@ export default class HomeCalcForm extends Component {
                             <div className="col-xs-12">
                                 <TextField
                                     style={textStyles}
-                                    value='01/12/2016'
+                                    value={this.state.backDate}
                                     floatingLabelText="До:"
                                     floatingLabelFixed={true}
                                 />
@@ -163,13 +185,12 @@ export default class HomeCalcForm extends Component {
                             </div>
                         </div>
                         <div style={divCalcBlock}>
-                            <div className="col-xs-12">
-                                <RaisedButton secondary={true} label='Подать заявку' onClick={this.btnCreateOfferHandler} />
-                            </div>
+                            <RaisedButton secondary={true} label='Подать заявку'
+                                          onClick={this.btnCreateOfferHandler} />
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
         )
     }
 }

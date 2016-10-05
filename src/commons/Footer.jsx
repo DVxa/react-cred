@@ -21,7 +21,6 @@ export default class Footer extends Component {
                             <p><a href="mailto:info-cred-cach@mail.ca.cbrf.ru">info-cred-cach@mail.ca.cbrf.ru</a></p>
                             <p>
                                 <strong><i className="phone-img-white"></i>8 (800) 600-0101</strong>
-                                <span>С Понедельника по Пятницу с 9-00 до 19-00</span>
                             </p>
                         </div>
 
