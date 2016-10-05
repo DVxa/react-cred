@@ -1,88 +1,77 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router';
 import EmailInput from './EmailInput';
+import PasswordInput from './PasswordInput';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as RegistrationActions from '../RegistrationActions';
 
 const textStyles = {
     width: '100%',
     fontSize: '18px'
 };
 
-
-export default class RegistrationForm extends Component {
+class RegistrationForm extends Component {
     constructor(props) {
         super(props);
-        this.btnRegisterHandler = this.btnRegisterHandler.bind(this);
-        this.onEmailChangeHandler = this.onEmailChangeHandler.bind(this);
-        this.onPasswordChangeHandler = this.onPasswordChangeHandler.bind(this);
-        this.onPasswordRepeatChangeHandler = this.onPasswordRepeatChangeHandler.bind(this);
-
-        this.state = {
-            email: '',
-            password: '',
-            passwordRepeat: '',
-        };
+        this.onRegisterButtonClickHandler = this.onRegisterButtonClickHandler.bind(this);
     }
 
-    btnRegisterHandler() {
-        console.log('btnRegisterHandler - click', this.state);
-    }
+    onRegisterButtonClickHandler() {
+        let {email, password, passwordRepeat} = this.props.form;
 
-    onEmailChangeHandler(value) {
-        this.setState({email: value});
-    }
+        var xhr = new XMLHttpRequest();
 
-    onPasswordChangeHandler(event) {
-        this.setState({password: event.target.value});
-    }
+        var body =
+            'email=' + encodeURIComponent(email.value) +
+            '&password=' + encodeURIComponent(password.value) +
+            '&passwordRepeat=' + encodeURIComponent(passwordRepeat.value);
 
-    onPasswordRepeatChangeHandler(event) {
-        this.setState({passwordRepeat: event.target.value});
+        xhr.open("POST", '/submit', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+        // xhr.onreadystatechange = () => { //обработка ответа };
+
+        xhr.send(body);
     }
 
     render() {
+        let {email, password, passwordRepeat} = this.props.form;
         return (
             <form method="post" id="data" className="validatable">
                 <input type="hidden" name="agreementSigned" value="true" />
                 <input type="hidden" name="leadId" value="0" />
-                <EmailInput value={this.state.email} onChange={this.onEmailChangeHandler}/>
-                <div className="row">
-                    <div className="col-xs-14 field  ">
-                        <TextField
-                            style={textStyles}
-                            type="password"
-                            name="password"
-                            errorText="Поле не должно быть пустым"
-                            hintText="Пароль"
-                            floatingLabelText="Пароль"
-                            value={this.state.password}
-                            onChange={this.onPasswordChangeHandler}
-                        />
-                        <div className="error-message-box"></div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-xs-14 field  ">
-                        <TextField
-                            style={textStyles}
-                            type="password"
-                            name="password"
-                            errorText="Поле не должно быть пустым"
-                            hintText="Пароль еще раз"
-                            floatingLabelText="Пароль еще раз"
-                            value={this.state.passwordRepeat}
-                            onChange={this.onPasswordRepeatChangeHandler}
-                        />
-                        <div className="error-message-box"></div>
-                    </div>
-                </div>
+                <EmailInput
+                    value={email.value}
+                    valid={email.valid}
+                    dirty={email.dirty}
+                    errors={email.errors}
+                    onChange={this.props.actions.setEmail}
+                />
+                <PasswordInput
+                    value={password.value}
+                    valid={password.valid}
+                    dirty={password.dirty}
+                    errors={password.errors}
+                    onChange={this.props.actions.setPassword}
+                />
+                <PasswordInput
+                    value={passwordRepeat.value}
+                    valid={passwordRepeat.valid}
+                    dirty={passwordRepeat.dirty}
+                    errors={passwordRepeat.errors}
+                    onChange={this.props.actions.setPasswordRepeat}
+                    hintText="Пароль еще раз"
+                    floatingLabelText="Пароль еще раз"
+                />
                 <div className="row separator-top"></div>
                 <div className="row">
                     <div className="col-xs-4"></div>
                     <div className="col-xs-10 field type-checkbox">
                         <input type="checkbox" id="id1"/>
-                        <label for="id1" className="radio-inline">
+                        <label htmlFor="id1" className="radio-inline">
                             Я согласен(на) с условиями <Link to="/static/doc/agreement.doc">договора-оферты</Link> на оказание информационных услуг.
                         </label>
                     </div>
@@ -92,8 +81,9 @@ export default class RegistrationForm extends Component {
                     <div className="col-xs-offset-7 col-xs-8 button-container">
                         <RaisedButton
                             label="Зарегистрироваться"
-                            onClick={this.btnRegisterHandler}
+                            onClick={this.onRegisterButtonClickHandler}
                             secondary={true}
+                            disabled={!email.valid || !password.valid || !passwordRepeat.valid}
                         />
                     </div>
                     <div className="col-xs-4"></div>
@@ -102,3 +92,17 @@ export default class RegistrationForm extends Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        form: state.forms.registration,
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(RegistrationActions, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RegistrationForm);

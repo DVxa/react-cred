@@ -11,7 +11,10 @@ module.exports = {
     publicPath: 'build'
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx'],
+    root: [
+      path.resolve(__dirname, 'src'),
+    ]
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
@@ -23,5 +26,6 @@ module.exports = {
       loader: 'babel',
       include: path.join(__dirname, 'src')
     }]
-  }
+  },
+  devtool: 'source-map',
 };
