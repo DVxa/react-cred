@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 
-import Home from './Home/Home';
-import About from './About/About';
-import FAQ from './FAQ/FAQ';
-import Registration from './Registration/Registration';
+import HomePage from './Home/HomePage';
+import AboutPage from './About/AboutPage';
+import FAQPage from './FAQ/FAQPage';
+import RegistrationPage from './Registration/RegistrationPage';
 
 export {
-    Home,
-    About,
-    FAQ,
-    Registration
+    HomePage,
+    AboutPage,
+    FAQPage,
+    RegistrationPage
 };
