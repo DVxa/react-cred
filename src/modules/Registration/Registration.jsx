@@ -4,10 +4,10 @@ import { green500, orange500 } from 'material-ui/styles/colors';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-import { Header } from "../commons/Header";
-import Content from "../commons/Content";
-import Footer from "../commons/Footer";
-import RegistrationContent from "./Registration/RegistrationContent";
+import { Header } from "../../commons/Header";
+import Content from "../../commons/Content";
+import Footer from "../../commons/Footer";
+import RegistrationContent from "./components/RegistrationContent";
 
 const muiTheme = getMuiTheme({
     palette: {

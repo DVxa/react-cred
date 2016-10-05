@@ -3,10 +3,10 @@ import { green500, orange500 } from 'material-ui/styles/colors';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-import { Header } from '../commons/Header';
-import Footer from "../commons/Footer";
-import HomeContent from './Home/HomeContent';
-import HomeAbout from './Home/HomeAbout';
+import { Header } from '../../commons/Header';
+import Footer from "../../commons/Footer";
+import HomeContent from './components/HomeContent';
+import HomeAbout from './components/HomeAbout';
 
 
 const muiTheme = getMuiTheme({

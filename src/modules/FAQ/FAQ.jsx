@@ -4,9 +4,9 @@ import {green500} from 'material-ui/styles/colors';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-import { Header } from '../commons/Header';
-import Content from '../commons/Content';
-import TabsFAQ from './FAQ/TabsFAQ';
+import { Header } from '../../commons/Header';
+import Content from '../../commons/Content';
+import TabsFAQ from './components/TabsFAQ';
 
 const muiTheme = getMuiTheme({
     palette: {
