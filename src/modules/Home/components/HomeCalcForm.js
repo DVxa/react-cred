@@ -1,25 +1,28 @@
 import React, {Component} from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import Slider from 'material-ui/Slider';
 
 import Sliders from './Sliders';
 
-const textStyles = {
-    fontSize: '24px',
-    width: '100%'
+const styles ={
+    textStyles: {
+        fontSize: '24px',
+        width: '100%'
+    },
+    sliderStyle: {
+        height: '24px',
+        marginTop: '6px',
+        marginBottom: '6px',
+        fontSize: '18px'
+    },
+    divCalcBlock: {
+        margin: '0 0 0 30px'
+    }
 };
 
-const sliderStyle = {
-    height: '24px',
-    marginTop: '6px',
-    marginBottom: '6px',
-    fontSize: '18px'
-};
 
-const divCalcBlock = {
-    margin: '0 30px'
-};
 
 export default class HomeCalcForm extends Component {
     constructor (props) {
@@ -81,8 +84,8 @@ export default class HomeCalcForm extends Component {
                     <div className="scrollers">
                         <i className="triangle-icon"></i>
                         <div className="scroller clearfix">
-                            <div className="col-xs-11 scroller__body">
-                                <Slider style={sliderStyle}
+                            <div className="col-xs-12 scroller__body">
+                                <Slider style={styles.sliderStyle}
                                         min={3000}
                                         max={50000}
                                         step={500}
@@ -95,9 +98,9 @@ export default class HomeCalcForm extends Component {
                                 {/*<span className="scroller__body__line__from">{this.props.minValue}</span>
                                  <span className="scroller__body__line__to">{this.props.maxValue}</span>*/}
                             </div>
-                            <div className="col-xs-2 scroller__input">
+                            <div className="col-xs-1 scroller__input">
                                 <TextField
-                                    style={{padding: '3px', width: '100%'}}
+                                    style={{padding: '3px', width: '80px', fontSize: '20px'}}
                                     value={this.state.amountValue}
                                     floatingLabelText="рублей"
                                     floatingLabelFixed={true}
@@ -106,8 +109,8 @@ export default class HomeCalcForm extends Component {
                             </div>
                         </div>
                         <div className="scroller clearfix">
-                            <div className="col-xs-11 scroller__body">
-                                <Slider style={sliderStyle}
+                            <div className="col-xs-12 scroller__body">
+                                <Slider style={styles.sliderStyle}
                                         min={1}
                                         max={48}
                                         step={1}
@@ -118,9 +121,9 @@ export default class HomeCalcForm extends Component {
                                         onChange={this.onChangePeriodHandler}
                                 />
                             </div>
-                            <div className="col-xs-2 scroller__input">
+                            <div className="col-xs-1 scroller__input">
                                 <TextField
-                                    style={{padding: '3px', width: '100%'}}
+                                    style={{padding: '3px', width: '80px', fontSize: '20px'}}
                                     value={this.state.periodValue}
                                     floatingLabelText="дней"
                                     floatingLabelFixed={true}
@@ -129,8 +132,8 @@ export default class HomeCalcForm extends Component {
                             </div>
                         </div>
                         <div className="scroller clearfix">
-                            <div className="col-xs-11 scroller__body">
-                                <Slider style={sliderStyle}
+                            <div className="col-xs-12 scroller__body">
+                                <Slider style={styles.sliderStyle}
                                         min={0}
                                         max={2.0}
                                         step={0.05}
@@ -141,11 +144,11 @@ export default class HomeCalcForm extends Component {
                                         onChange={this.onChangeRateHandler}
                                 />
                             </div>
-                            <div className="col-xs-2 scroller__input">
+                            <div className="col-xs-1 scroller__input">
                                 <TextField
-                                    style={{padding: '3px', width: '100%'}}
+                                    style={{padding: '3px', width: '80px', fontSize: '20px'}}
                                     value={this.state.rateValue}
-                                    floatingLabelText="рублей"
+                                    floatingLabelText="% в дн"
                                     floatingLabelFixed={true}
                                     onChange={this.onChangeRateHandler}
                                 />
@@ -153,10 +156,10 @@ export default class HomeCalcForm extends Component {
                         </div>
                     </div>
                     <div className="calculator-result">
-                        <div style={divCalcBlock}>
+                        <div style={styles.divCalcBlock}>
                             <div className="col-xs-12">
                                 <TextField
-                                    style={textStyles}
+                                    style={styles.textStyles}
                                     value={this.state.amountValue}
                                     floatingLabelText="Возьмете:"
                                     floatingLabelFixed={true}
@@ -164,29 +167,41 @@ export default class HomeCalcForm extends Component {
                             </div>
 
                         </div>
-                        <div style={divCalcBlock}>
+                        <div style={styles.divCalcBlock}>
                             <div className="col-xs-12">
                                 <TextField
-                                    style={textStyles}
+                                    style={styles.textStyles}
                                     value={this.state.backDate}
                                     floatingLabelText="До:"
                                     floatingLabelFixed={true}
                                 />
                             </div>
                         </div>
-                        <div style={divCalcBlock}>
+                        <div style={styles.divCalcBlock}>
                             <div className="col-xs-12">
                                 <TextField
-                                    style={textStyles}
+                                    style={styles.textStyles}
                                     value={this.state.backAmountValue}
                                     floatingLabelText="Отдадите:"
                                     floatingLabelFixed={true}
                                 />
                             </div>
                         </div>
-                        <div style={divCalcBlock}>
-                            <RaisedButton secondary={true} label='Подать заявку'
-                                          onClick={this.btnCreateOfferHandler} />
+                        <div style={styles.divCalcBlock}>
+                            <div className="col-xs-12">
+                                <RaisedButton label='Подать заявку'
+                                              style={{marginTop: '10px'}}
+                                              onClick={this.btnCreateOfferHandler}
+                                              secondary={true}
+                                              href={
+                                                  "/offers/get/" +
+                                                  this.state.amountValue + ":" +
+                                                  this.state.periodValue + ":" +
+                                                  this.state.rateValue
+                                              }
+                                              fullWidth={true}
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>
