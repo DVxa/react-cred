@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router';
-import RegisterForm from './RegisterForm';
+import RegistrationForm from './RegistrationForm';
 
 
-export default class RegisterContent extends Component {
+export default class RegistrationContent extends Component {
     render() {
         return(
             <div>
@@ -11,7 +11,7 @@ export default class RegisterContent extends Component {
                     <div className="wrapper clearfix">
                         <div className="row">
                             <div className="col-xs-9">
-                                <RegisterForm />
+                                <RegistrationForm />
                             </div>
                             <div className="col-xs-4 col-xs-offset-1">
                                 <div className="row">

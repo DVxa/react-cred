@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Header } from "../components/Header";
 import Content from "../components/Content";
 import Footer from "../components/Footer";
-import RegisterContent from "../components/Register/RegisterContent";
+import RegistrationContent from "../components/Registration/RegistrationContent";
 
 export default class Register extends Component {
     render() {
@@ -11,7 +11,7 @@ export default class Register extends Component {
                 <Header />
                 <main className="content">
                     <Content title="Регистрация клиента"/>
-                    <RegisterContent />
+                    <RegistrationContent />
                 </main>
                 <Footer />
             </div>
