@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import {green500} from 'material-ui/styles/colors';
+import {green500, orange500} from 'material-ui/styles/colors';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
@@ -11,6 +11,7 @@ import TabsFAQ from './components/TabsFAQ';
 const muiTheme = getMuiTheme({
     palette: {
         primary1Color: green500,
+        accent1Color: orange500
     }
 });
 
