@@ -31,7 +31,7 @@ class EmailInput extends Component {
     render() {
         return (
             <div className="row">
-                <div className="col-xs-14 field  ">
+                <div className="col-xs-14 field">
                     <TextField
                         style={textStyles}
                         type="text"

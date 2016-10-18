@@ -1,7 +1,6 @@
 /**
- * Created by Kaiser on 06.10.2016.
+ * Created by V.Minyailov-book on 15.10.2016.
  */
-
 import React, { Component, PropTypes } from 'react';
 import TextField from 'material-ui/TextField';
 import ValidatedInputFactory from 'commons/HOC/ValidatedInput';
@@ -11,7 +10,7 @@ const textStyles = {
     fontSize: '18px'
 };
 
-class PasswordInput extends Component {
+class TextInput extends Component {
 
     static propTypes = {
         value: PropTypes.string,
@@ -28,10 +27,10 @@ class PasswordInput extends Component {
             <div className="col-xs-7">
                 <TextField
                     style={textStyles}
-                    type="password"
-                    name="password"
-                    hintText="Пароль"
-                    floatingLabelText="Пароль"
+                    type="text"
+                    name="FirstName"
+                    hintText="Фамилия"
+                    floatingLabelText="Фамилия"
                     {...this.props}
                 />
                 <div className="error-message-box"></div>
@@ -40,4 +39,4 @@ class PasswordInput extends Component {
     }
 }
 
-export default ValidatedInputFactory(PasswordInput);
+export default ValidatedInputFactory(TextInput);

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
+import {browserHistory} from 'react-router';
 import TextField from 'material-ui/TextField';
 import Slider from 'material-ui/Slider';
 
@@ -76,6 +76,12 @@ export default class HomeCalcForm extends Component {
     }
     btnCreateOfferHandler() {
         console.log('this.btnCreateOfferHandler - click');
+        browserHistory.push(
+            "/offers/" +
+                this.state.amountValue + "#" +
+                this.state.periodValue + "#" +
+                this.state.rateValue
+        );
     }
     render() {
         return (
@@ -193,12 +199,7 @@ export default class HomeCalcForm extends Component {
                                               style={{marginTop: '10px'}}
                                               onClick={this.btnCreateOfferHandler}
                                               secondary={true}
-                                              href={
-                                                  "/offers/get/" +
-                                                  this.state.amountValue + ":" +
-                                                  this.state.periodValue + ":" +
-                                                  this.state.rateValue
-                                              }
+                                              href={""}
                                               fullWidth={true}
                                 />
                             </div>

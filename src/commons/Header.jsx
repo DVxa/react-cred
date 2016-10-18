@@ -51,7 +51,6 @@ export class Header extends Component {
             <FlatButton
                 label="Отмена"
                 primary={true}
-                onTouchTap={this.closeModal}
                 onClick={this.closeModal}
             />
         ];
@@ -60,7 +59,7 @@ export class Header extends Component {
             <header className="header">
                 <AppBar
                     title="Касса взаимопомощи"
-                    showMenuIconButton={true}
+                    showMenuIconButton={false}
                     iconElementLeft={
                         <Avatar src="./static/dist/img/avatar_sb.png"
                                 size={45}

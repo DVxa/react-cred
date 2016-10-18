@@ -1,3 +1,6 @@
+/**
+ * Created by V.Minyailov-book on 17.10.2016.
+ */
 import React, {Component} from 'react';
 import EmailInput from './EmailInput';
 import PasswordInput from './PasswordInput';
@@ -8,14 +11,14 @@ import Checkbox from 'material-ui/Checkbox';
 import * as RegistrationActions from '../RegistrationActions';
 
 
-class RegistrationForm extends Component {
+class OfferCreateForm extends Component {
     constructor(props) {
         super(props);
-        this.onRegisterButtonClickHandler = this.onRegisterButtonClickHandler.bind(this);
+        this.onOfferCreateButtonClickHandler = this.onOfferCreateButtonClickHandler.bind(this);
     }
 
-    onRegisterButtonClickHandler() {
-        let {email, password, passwordRepeat} = this.props.form;
+    onOfferCreateButtonClickHandler() {
+        let {email, password} = this.props.form;
 
         var XHR = ("onload" in new XMLHttpRequest()) ? XMLHttpRequest : XDomainRequest;
         var xhr = new XHR();
@@ -23,7 +26,7 @@ class RegistrationForm extends Component {
         var body =
             'email=' + encodeURIComponent(email.value) +
             '&password=' + encodeURIComponent(password.value); // +
-            //'&passwordRepeat=' + encodeURIComponent(passwordRepeat.value);
+        //'&passwordRepeat=' + encodeURIComponent(passwordRepeat.value);
 
         xhr.open("POST", 'http://192.168.1.213:8077/user-profile/add-user', true);
 
@@ -40,35 +43,33 @@ class RegistrationForm extends Component {
     }
 
     render() {
-        let {email, password, passwordRepeat} = this.props.form;
+        let {amount, period, rate} = this.props.form;
         return (
 
             <form method="post" id="data" className="validatable">
                 <input type="hidden" name="agreementSigned" value="true" />
                 <input type="hidden" name="leadId" value="0" />
-                <EmailInput
-                    value={email.value}
-                    valid={email.valid}
-                    dirty={email.dirty}
-                    errors={email.errors}
-                    onChange={this.props.actions.setEmail}
+                <AmountInput
+                    value={amount.value}
+                    valid={amount.valid}
+                    dirty={amount.dirty}
+                    errors={amount.errors}
+                    onChange={this.props.actions.setAmount}
                 />
                 <div className="row">
-                    <PasswordInput
-                        value={password.value}
-                        valid={password.valid}
-                        dirty={password.dirty}
-                        errors={password.errors}
-                        onChange={this.props.actions.setPassword}
+                    <PeriodInput
+                        value={period.value}
+                        valid={period.valid}
+                        dirty={period.dirty}
+                        errors={period.errors}
+                        onChange={this.props.actions.setPeriod}
                     />
-                    <PasswordInput
-                        value={passwordRepeat.value}
-                        valid={passwordRepeat.valid}
-                        dirty={passwordRepeat.dirty}
-                        errors={passwordRepeat.errors}
-                        onChange={this.props.actions.setPasswordRepeat}
-                        hintText="Пароль еще раз"
-                        floatingLabelText="Пароль еще раз"
+                    <RateInput
+                        value={rate.value}
+                        valid={rate.valid}
+                        dirty={rate.dirty}
+                        errors={ratete.errors}
+                        onChange={this.props.actions.setRate}
                     />
                 </div>
                 <div className="row separator-top"></div>
@@ -84,10 +85,10 @@ class RegistrationForm extends Component {
                 <div className="row">
                     <div className="col-xs-offset-7 col-xs-8 button-container">
                         <RaisedButton
-                            label="Зарегистрироваться"
-                            onClick={this.onRegisterButtonClickHandler}
+                            label="Создать заявку на заём"
+                            onClick={this.onOfferCreateButtonClickHandler}
                             secondary={true}
-                            disabled={!email.valid || !password.valid || !passwordRepeat.valid}
+                            disabled={!amount.valid || !period.valid || !rate.valid}
                         />
                     </div>
                     <div className="col-xs-4"></div>

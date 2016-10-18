@@ -6,7 +6,7 @@ export default class Footer extends Component {
             <footer className="footer">
                 <div className="wrapper clearfix">
 
-                    <div class="row">
+                    <div className="row">
                         {/*<div class="social">
                             <i class="vk"><a href="http://vk.com/fingooroo" target="_blank"></a></i>
                             <i class="fb"><a href="https://www.facebook.com/fingooroo" target="_blank"></a></i>

@@ -37,14 +37,12 @@ export default function ValidatedInputFactory(WrappedInput) {
             delete props.errors;
 
             return (
-                <div className="row">
-                    <div className="col-xs-14 field  ">
-                        <WrappedInput
-                            {...props}
-                            errorText={!valid && dirty ? <ValidatedInputErrors errors={errors}/> : null}
-                            onChange={this.onValueChangeHandler}
-                        />
-                    </div>
+                <div>
+                    <WrappedInput
+                        {...props}
+                        errorText={!valid && dirty ? <ValidatedInputErrors errors={errors}/> : null}
+                        onChange={this.onValueChangeHandler}
+                    />
                 </div>
             )
         }

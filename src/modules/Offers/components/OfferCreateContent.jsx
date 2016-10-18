@@ -1,10 +1,13 @@
+/**
+ * Created by V.Minyailov-book on 17.10.2016.
+ */
 import React, {Component} from 'react';
 import Paper from 'material-ui/Paper';
 import RegistrationForm from './RegistrationForm';
 import {Link } from 'react-router';
 
 
-export default class RegistrationContent extends Component {
+export default class OfferCreateContent extends Component {
     render() {
         return(
             <div>
@@ -14,7 +17,7 @@ export default class RegistrationContent extends Component {
                             <div className="row">
 
                                 <div className="col-xs-9">
-                                    <RegistrationForm />
+                                    <OfferCreateForm />
                                 </div>
                                 <div className="col-xs-4 col-xs-offset-1">
                                     <div className="row">
@@ -29,7 +32,7 @@ export default class RegistrationContent extends Component {
                                                 magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
                                                 ullamco laboris nisi ut aliquip ex ea commodo consequat.
                                             </p>
-                                            <Link to="/faq/register"> More ... </Link>
+                                            <Link to="/faq/offer-new-borrow"> More ... </Link>
                                         </div>
                                     </div>
                                 </div>
@@ -41,6 +44,6 @@ export default class RegistrationContent extends Component {
                     <div className="wrapper clearfix"></div>
                 </div>
             </div>
-       );
+        );
     }
 }
