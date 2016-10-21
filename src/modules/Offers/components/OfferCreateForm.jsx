@@ -37,7 +37,7 @@ class OfferCreateForm extends Component {
         console.log(body);
 
         let promise = fetch (
-            'http://localhost:8077/request-loan/add-request',
+            'http://192.168.1.213:8077/request-loan/add-request',
             {
                 method: 'post',
                 body: body,
