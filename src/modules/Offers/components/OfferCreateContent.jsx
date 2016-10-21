@@ -3,7 +3,7 @@
  */
 import React, {Component} from 'react';
 import Paper from 'material-ui/Paper';
-import RegistrationForm from './RegistrationForm';
+import OfferCreateForm from './OfferCreateForm';
 import {Link } from 'react-router';
 
 

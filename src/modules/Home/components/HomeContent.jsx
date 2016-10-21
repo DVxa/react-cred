@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { Link } from 'react-router';
 import Paper from 'material-ui/Paper';
 import { Step, Stepper, StepLabel} from 'material-ui/Stepper';
-import {Tabs, Tab} from 'material-ui/Tabs';
 
 import HomeOffesrLoan from './HomeOffesrLoan';
 import HomeCalcForm from './HomeCalcForm';

@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
-import {browserHistory} from 'react-router';
+import {browserHistory, Link} from 'react-router';
 import TextField from 'material-ui/TextField';
 import Slider from 'material-ui/Slider';
-
-import Sliders from './Sliders';
 
 const styles ={
     textStyles: {
@@ -75,13 +73,12 @@ export default class HomeCalcForm extends Component {
 
     }
     btnCreateOfferHandler() {
-        console.log('this.btnCreateOfferHandler - click');
-        browserHistory.push(
-            "/offers/" +
-                this.state.amountValue + "#" +
-                this.state.periodValue + "#" +
-                this.state.rateValue
-        );
+        browserHistory.push("/offernew");
+        /*
+         this.state.amountValue + "#" +
+         this.state.periodValue + "#" +
+         this.state.rateValue
+        */
     }
     render() {
         return (

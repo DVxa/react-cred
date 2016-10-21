@@ -26,7 +26,7 @@ export default class OfferCreatePage extends Component {
                 <div>
                     <Header />
                     <main className="content">
-                        <Content title="Создание заявки на заём"/>
+                        <Content title="Создание заявки"/>
                         <OfferCreateContent />
                     </main>
                     <Footer />

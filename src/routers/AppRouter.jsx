@@ -14,10 +14,12 @@ export default class AppRouter extends Component {
                 <Route component={AboutPage}        path="/about"/>
                 <Route component={FAQPage}          path="/faq"/>
                 <Route component={RegistrationPage} path="/register"/>
+                <Route component={OfferCreatePage}  path="/offernew"/>
+                {/*
                 <Route component={OfferListPage}    path="/offers/:amount#:period#:rate">
                     <Route component={OfferPage}        path="/offer"/>
                 </Route>
-                <Route component={OfferCreatePage}        path="/offer-new-borrow"/>
+                */}
             </Router>
         );
     }
