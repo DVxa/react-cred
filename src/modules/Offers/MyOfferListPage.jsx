@@ -1,5 +1,5 @@
 /**
- * Created by V.Minyailov-book on 17.10.2016.
+ * Created by V.Minyailov-book on 22.10.2016.
  */
 import React, { Component } from 'react';
 
@@ -10,7 +10,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { Header } from "../../commons/Header";
 import Content from "../../commons/Content";
 import Footer from "../../commons/Footer";
-import OfferCreateContent from "./components/OfferCreate/OfferCreateContent";
+import MyOfferListContent from "./components/MyOfferList/MyOfferListContent";
 
 const muiTheme = getMuiTheme({
     palette: {
@@ -19,15 +19,15 @@ const muiTheme = getMuiTheme({
     }
 });
 
-export default class OfferCreatePage extends Component {
+export default class MyOfferListPage extends Component {
     render() {
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
                 <div>
                     <Header />
                     <main className="content">
-                        <Content title="Создание заявки"/>
-                        <OfferCreateContent />
+                        <Content title="Мои заявки"/>
+                        <MyOfferListContent />
                     </main>
                     <Footer />
                 </div>

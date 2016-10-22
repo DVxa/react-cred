@@ -2,17 +2,18 @@
  * Created by V.Minyailov-book on 17.10.2016.
  */
 import React, {Component} from 'react';
-import AmountInput from './inputs/AmountlInput';
-import PeriodInput from './inputs/PeriodlInput';
-import RateInput from './inputs/RateInput';
-import DelimiterCheck from './inputs/DelimiterCheck';
+import {browserHistory} from 'react-router';
+import AmountInput from '../inputs/AmountlInput';
+import PeriodInput from '../inputs/PeriodlInput';
+import RateInput from '../inputs/RateInput';
+import DelimiterCheck from '../inputs/DelimiterCheck';
 
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Checkbox from 'material-ui/Checkbox';
-import * as OfferCreateActions from '../OfferCreateActions';
+import * as OfferCreateActions from './OfferCreateActions';
 
 
 class OfferCreateForm extends Component {
@@ -56,7 +57,7 @@ class OfferCreateForm extends Component {
                     console.log(data);
                     if (data.status == "OK") {
                         alert ("Заявка создана!");
-                        browserHistory.push('/myOffers');
+                        browserHistory.push('/offers/my');
                     }
                 });
             }

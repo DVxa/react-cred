@@ -2,7 +2,7 @@
  * Created by Kaiser on 06.10.2016.
  */
 import registrationFormReducer from '../modules/Registration/RegistrationFormReducer';
-import offerCreateFormReducer from '../modules/Offers/OfferCreateFormReducer';
+import offerCreateFormReducer from '../modules/Offers/components/OfferCreate/OfferCreateFormReducer';
 
 export default function formsReducer(state = {}, action) {
  return {

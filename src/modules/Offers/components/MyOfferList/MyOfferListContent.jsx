@@ -1,13 +1,14 @@
 /**
- * Created by V.Minyailov-book on 17.10.2016.
+ * Created by V.Minyailov-book on 22.10.2016.
  */
+
 import React, {Component} from 'react';
 import Paper from 'material-ui/Paper';
-import OfferCreateForm from './OfferCreateForm';
 import {Link } from 'react-router';
+import MyOfferListTable from './MyOfferListTable';
 
 
-export default class OfferCreateContent extends Component {
+export default class MyOfferListContent extends Component {
     render() {
         return(
             <div>
@@ -16,17 +17,17 @@ export default class OfferCreateContent extends Component {
                         <Paper style={{padding: '20px'}}>
                             <div className="row">
 
-                                <div className="col-xs-9">
-                                    <OfferCreateForm />
+                                <div className="col-xs-10">
+                                    <MyOfferListTable />
                                 </div>
-                                <div className="col-xs-4 col-xs-offset-1">
+                                <div className="col-xs-3 col-xs-offset-1">
                                     <div className="row">
                                         <div className="col-xs-14">
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="col-xs-14">
-                                            <h4>Как правильно заполнить анкету заемщика?</h4>
+                                            <h4>Как рассмотреть заявку</h4>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                                                 sed do eiusmod tempor incididunt ut labore et dolore
                                                 magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation

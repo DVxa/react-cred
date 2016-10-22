@@ -8,9 +8,12 @@ export default class MainMenu extends Component {
     render() {
         return (
             <div className="top-menu-block full-width">
-                <ul className="top-menu elem3 clearfix">
+                <ul className="top-menu elem4 clearfix">
                     <li className="">
-                        <Link to="/">Главная</Link>
+                        <Link to="/">Тестовая</Link>
+                    </li>
+                    <li className="">
+                        <Link to="/home">Главная</Link>
                     </li>
                     <li className="">
                         <Link to="/about">О сервисе</Link>
