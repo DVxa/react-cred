@@ -6,9 +6,20 @@ import React, {Component} from 'react';
 import Paper from 'material-ui/Paper';
 import {Link } from 'react-router';
 import MyOfferListTable from './MyOfferListTable';
+import RaisedButton from 'material-ui/RaisedButton';
+import {browserHistory} from 'react-router';
 
 
 export default class MyOfferListContent extends Component {
+    constructor(props) {
+        super(props);
+        this.onBtnNewOfferClickHandler = this.onBtnNewOfferClickHandler.bind(this);
+    }
+
+    onBtnNewOfferClickHandler() {
+        browserHistory.push('offernew');
+    }
+
     render() {
         return(
             <div>
@@ -34,6 +45,17 @@ export default class MyOfferListContent extends Component {
                                                 ullamco laboris nisi ut aliquip ex ea commodo consequat.
                                             </p>
                                             <Link to="/faq/offer-new-borrow"> More ... </Link>
+                                        </div>
+                                    </div>
+                                    <div className="wrapper clearfix"></div>
+                                    <div className="row">
+                                        <div className="col-xs-14">
+                                            <RaisedButton onClick={this.onBtnNewOfferClickHandler}
+                                                          label="Создать заявку"
+                                                          style={{marginTop: 50}}
+                                                          secondary={true}
+                                                          labelStyle={{fontSize: 18}}
+                                            />
                                         </div>
                                     </div>
                                 </div>
