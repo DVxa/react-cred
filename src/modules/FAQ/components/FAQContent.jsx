@@ -1,19 +1,20 @@
-/**
- * Created by V.Minyailov-book on 24.10.2016.
- */
-
-import React, {Component} from 'react';
+import React from 'react';
 import Paper from 'material-ui/Paper';
 import {Link } from 'react-router';
 
-export default class AbountContentContent extends Component {
+export default class FAQContent extends React.Component {
+
+    constructor(props) {
+        super(props);
+    }
+
     render() {
-        return(
+        return (
             <div>
                 <div className="row-padding">
                     <div className="wrapper clearfix">
                         <Paper style={{padding: '20px'}}>
-                            <h1>О проекте</h1>
+                            <h1>Вопрос-ответ</h1>
                             <div className="row">
                                 <div className="col-xs-9">
 
@@ -43,6 +44,6 @@ export default class AbountContentContent extends Component {
                     <div className="wrapper clearfix"></div>
                 </div>
             </div>
-        );
+        )
     }
 }

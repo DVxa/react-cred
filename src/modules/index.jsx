@@ -10,10 +10,12 @@ import OfferCreatePage from './Offers/OfferCreatePage';
 import MyOfferListPage from './Offers/MyOfferListPage'
 import TestPage from './Test/TestPage';
 
+import UserProfilePage from './UserProfile/UserProfilePage';
+
 export {
     HomePage,       AboutPage,
     FAQPage,        RegistrationPage,
     OfferListPage,  OfferPage,
     OfferCreatePage,MyOfferListPage,
-    TestPage
+    TestPage, UserProfilePage
 };

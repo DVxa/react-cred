@@ -9718,7 +9718,8 @@ html, body {
 }
 
 .wrapper {
-  width: 1042px;
+  //width: 1042px;
+  width: 95%;
   margin: 0 auto;
   padding: 0 18px;
 }

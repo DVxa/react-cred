@@ -18,7 +18,7 @@ export default class MainMenu extends Component {
                             <Link to="/home">Главная</Link>
                         </li>
                         <li className="">
-                            <Link to="/about">О сервисе</Link>
+                            <Link to="/about">О проекте</Link>
                         </li>
                         <li className="">
                             <Link to="/faq">Вопрос-Ответ</Link>

@@ -51,15 +51,15 @@ export default class OfferForm extends Component {
                     <div className="row">
                         <div className="col-xs-3">
                             <h7>Рублей</h7>
-                            <h1>{this.state.offer.LOAN_SUMM}</h1>
+                            <h2>{this.state.offer.LOAN_SUMM}</h2>
                         </div>
                         <div className="col-xs-3">
                              <h7>Дней</h7>
-                             <h1>28</h1>
+                             <h2>28</h2>
                         </div>
                         <div className="col-xs-3">
                              <h7>%/день</h7>
-                             <h1>{this.state.offer.DAYPRC}</h1>
+                             <h2>{this.state.offer.DAYPRC}</h2>
                         </div>
                         <div className="col-xs-5">
                             <h7>Возможность дробления</h7>
@@ -72,14 +72,14 @@ export default class OfferForm extends Component {
                     <div className="row">
                         <div className="col-xs-7">
                             <h7>Дата возврата</h7>
-                            <h1>12.11.2016</h1>
+                            <h2>12.11.2016</h2>
                         </div>
                         <div className="col-xs-7">
                             <h7>Сумма возврата</h7>
-                            <h1>{this.state.offer.LOAN_SUMM +
+                            <h2>{this.state.offer.LOAN_SUMM +
                                  this.state.offer.LOAN_SUMM *
                                  this.state.offer.DAYPRC / 100 * 12
-                            }</h1>
+                            }</h2>
                         </div>
                     </div>
                     <div className="white-layout clearfix dealings">

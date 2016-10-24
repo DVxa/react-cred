@@ -34,21 +34,21 @@ export default class HomeCalcForm extends Component {
             amountValue : 5000,
             periodValue : 14,
             rateValue   : 0.2,
-            backAmountValue: 5000 + (5000 * 0.2/100 * 14),
+            backAmountValue: 5000 + 5000 * (0.2 + 0.05)/100 * 14,
             backDate    : '01.01.2017'
         };
     }
     onChangeCalcElems() {
         var backAmount = this.state.amountValue +
-            (this.state.amountValue * this.state.rateValue/100 * this.state.periodValue);
+            (this.state.amountValue * (this.state.rateValue + 0.05) / 100 * this.state.periodValue);
         this.setState({backAmountValue: backAmount});
     }
     onChangeAmountHandler (event, value) {
         if (value < 3000) {
             this.setState({amountValue: 3000});
         } else {
-            if (value > 50000) {
-                this.setState({amountValue: 50000});
+            if (value > 30000) {
+                this.setState({amountValue: 30000});
             } else {
                 this.setState({amountValue: value});
             }
@@ -90,8 +90,8 @@ export default class HomeCalcForm extends Component {
                             <div className="col-xs-11 scroller__body">
                                 <Slider style={styles.sliderStyle}
                                         min={3000}
-                                        max={50000}
-                                        step={500}
+                                        max={30000}
+                                        step={1000}
                                         sliderStyle={{marginBottom: '16px', marginTop: '8px'}}
                                         defaultValue={5000}
                                         description="Сумма заявки"
@@ -138,7 +138,7 @@ export default class HomeCalcForm extends Component {
                             <div className="col-xs-11 scroller__body">
                                 <Slider style={styles.sliderStyle}
                                         min={0}
-                                        max={2.0}
+                                        max={0.5}
                                         step={0.05}
                                         sliderStyle={{marginBottom: '16px', marginTop: '8px'}}
                                         defaultValue={0.2}

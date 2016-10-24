@@ -1,3 +1,6 @@
+/**
+ * Created by V.Minyailov-book on 24.10.2016.
+ */
 import React, { Component } from 'react';
 
 import {green500, orange500} from 'material-ui/styles/colors';
@@ -8,7 +11,7 @@ import { Header, MainMenu,
     LeftMenu, LogoBlock,
     Footer
 } from '../../commons';
-import FAQContent from './components/FAQContent';
+import UserProfileContent from './components/UserProfileContent';
 
 const muiTheme = getMuiTheme({
     palette: {
@@ -17,7 +20,7 @@ const muiTheme = getMuiTheme({
     }
 });
 
-export default class FAQ extends Component {
+export default class UserProfilePage extends Component {
     render() {
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
@@ -35,7 +38,7 @@ export default class FAQ extends Component {
                             <div className="col-xs-11">
                                 <LogoBlock />
                                 <MainMenu />
-                                <FAQContent />
+                                <UserProfileContent />
                             </div>
                         </div>
                     </main>
