@@ -23,11 +23,11 @@ export default class MyOfferListContent extends Component {
     render() {
         return(
             <div>
-                <div className="gray-layout row-padding">
+                <div className="row-padding">
                     <div className="wrapper clearfix">
                         <Paper style={{padding: '20px'}}>
+                            <h1>Мои заявки</h1>
                             <div className="row">
-
                                 <div className="col-xs-10">
                                     <MyOfferListTable />
                                 </div>

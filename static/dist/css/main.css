@@ -9699,7 +9699,7 @@ html, body {
 }
 
 .content {
-  padding: 0 0 135px;
+  padding: 0 0 35px;
 }
 .content__first-block {
   padding: 47px 0 0 0;
@@ -9718,7 +9718,7 @@ html, body {
 }
 
 .wrapper {
-  width: 1012px;
+  width: 1042px;
   margin: 0 auto;
   padding: 0 18px;
 }
@@ -9726,8 +9726,8 @@ html, body {
 .footer {
   min-width: 1012px;
   max-width: 2500px;
-  margin: -160px auto 0;
-  height: 160px;
+  //margin: -160px auto 0;
+  //height: 160px;
   position: relative;
   background: #4CAF50;
   color: #fff !important;
@@ -10070,7 +10070,7 @@ form .button-container {
   /*z-index: 100;*/
 }
 .footer .wrapper {
-  padding-top: 50px;
+  padding: 25px 0 15px 0;
 }
 .footer .wrapper .vk {
   background-image: url(../img/sprite/sprite.png);
@@ -10174,7 +10174,7 @@ form .button-container {
 .calculator .scrollers {
   position: relative;
   float: left;
-  width: 75%;
+  width: 65%;
   padding-left: 1.5%;
   border-right: 2px solid #4CAF50;
 }
@@ -10472,7 +10472,7 @@ form .button-container {
   height: 100%;
   position: absolute;
   float: left;
-  width: 25%;
+  width: 35%;
   padding: 5px;
   text-align: center;
 }
@@ -10553,6 +10553,7 @@ form .button-container {
 
 .full-width {
   width: 100%;
+  padding: 0 40px 0 40px;
 }
 
 .message-container {
@@ -11756,7 +11757,7 @@ small {
 
 h1 {
   font-size: 34px;
-  margin: 24px 0;
+  margin: 6px 0;
   color: #58595b;
 }
 
@@ -11963,8 +11964,8 @@ ol ol {
   clear: both;
   padding: 0;
   margin: 0;
-  border: 1px solid #4CAF50;
-  border-radius: 5px;
+  //border: 1px solid #4CAF50;
+  //border-radius: 5px;
   background: #ffffff;
 }
 .top-menu li {
@@ -12045,7 +12046,7 @@ ol ol {
   margin-left: 65px;
 }
 .role .role-tabs li span a, .role .role-tabs li span a:active, .role .role-tabs li span a:hover, .role .role-tabs li span a:visited {
-  color: inherit;
+  color: rgb(76, 175, 80);
   text-decoration: none;
 }
 .role .role-tabs li span .role-tabs__in {
@@ -12099,7 +12100,7 @@ ol ol {
 }
 .role .role-tabs li.current span {
   border-bottom: 0;
-  color: #ffffff;
+  color: rgb(76, 175, 80);
 }
 .role .role-tabs li.current span .role-tabs__in {
   position: absolute;

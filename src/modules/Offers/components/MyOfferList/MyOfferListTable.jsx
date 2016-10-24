@@ -6,6 +6,7 @@ import React, {Component} from 'react';
 import {Table, TableBody, TableFooter, TableHeader, TableHeaderColumn, TableRow, TableRowColumn}
     from 'material-ui/Table';
 import RaisedButton from 'material-ui/RaisedButton';
+import {Link} from 'react-router';
 
 export default class MyOfferListTable extends Component {
 
@@ -13,7 +14,12 @@ export default class MyOfferListTable extends Component {
         super(props);
         this.state = {offers : []};
         //this.getMyOffersData = this.getMyOffersData.bind(this);
+        this.onOfferMoreButtonClickHandler = this.onOfferMoreButtonClickHandler.bind(this);
     }
+
+    onOfferMoreButtonClickHandler = (e) => {
+        console.log(e.target.getAttribute('value'));
+    };
 
     componentWillMount() {
     //getMyOffersData () {
@@ -57,12 +63,17 @@ export default class MyOfferListTable extends Component {
                 </TableHeader>
                 <TableBody displayRowCheckbox={false}>
                     {this.state.offers.map((elem, index) => (
-                    <TableRow key={index}>
+                    <TableRow key={index} data-item={elem.ID} onClick={this.onOfferMoreButtonClickHandler}>
                         <TableRowColumn style={{fontSize: 18}}>{elem.LOAN_SUMM}</TableRowColumn>
                         <TableRowColumn style={{fontSize: 18}}>12</TableRowColumn>
                         <TableRowColumn style={{fontSize: 18}}>{elem.DAYPRC}</TableRowColumn>
                         <TableRowColumn>
-                            <RaisedButton label="открыть" secondary={true}></RaisedButton>
+                            {/*<RaisedButton label="открыть"
+                                          secondary={true}
+                                          onClick={this.onOfferMoreButtonClickHandler}
+                                          value={elem.ID}
+                            />*/}
+                            <Link to={"/offer/" + elem.ID}>More ...</Link>
                         </TableRowColumn>
                     </TableRow>
                     ))}

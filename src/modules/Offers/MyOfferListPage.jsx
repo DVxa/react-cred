@@ -7,9 +7,10 @@ import { green500, orange500 } from 'material-ui/styles/colors';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-import { Header } from "../../commons/Header";
-import Content from "../../commons/Content";
-import Footer from "../../commons/Footer";
+import { Header, MainMenu,
+    LeftMenu, LogoBlock,
+    Footer
+} from '../../commons';
 import MyOfferListContent from "./components/MyOfferList/MyOfferListContent";
 
 const muiTheme = getMuiTheme({
@@ -24,12 +25,26 @@ export default class MyOfferListPage extends Component {
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
                 <div>
-                    <Header />
+                    <header className="header">
+                        <Header />
+                    </header>
                     <main className="content">
-                        <Content title="Мои заявки"/>
-                        <MyOfferListContent />
+                        <div className="row">
+                            {/*Left Menu*/}
+                            <div className="col-xs-3">
+                                <LeftMenu />
+                            </div>
+                            {/*Main Content*/}
+                            <div className="col-xs-11">
+                                <LogoBlock />
+                                <MainMenu />
+                                <MyOfferListContent />
+                            </div>
+                        </div>
                     </main>
-                    <Footer />
+                    <footer className="footer">
+                        <Footer />
+                    </footer>
                 </div>
             </MuiThemeProvider>
         );

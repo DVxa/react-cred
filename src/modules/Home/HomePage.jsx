@@ -3,11 +3,11 @@ import { green500, orange500 } from 'material-ui/styles/colors';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-import { Header } from '../../commons/Header';
-import Footer from "../../commons/Footer";
+import { Header, MainMenu,
+    LeftMenu, LogoBlock,
+    Footer
+} from '../../commons';
 import HomeContent from './components/HomeContent';
-import HomeAbout from './components/HomeAbout';
-
 
 const muiTheme = getMuiTheme({
     palette: {
@@ -16,17 +16,31 @@ const muiTheme = getMuiTheme({
     }
 });
 
-export default class Home extends Component {
+export default class HomePage extends Component {
     render() {
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
                 <div>
-                    <Header />
+                    <header className="header">
+                        <Header />
+                    </header>
                     <main className="content">
-                        <HomeContent />
-                        <HomeAbout />
+                        <div className="row">
+                            {/*Left Menu*/}
+                            <div className="col-xs-3">
+                                <LeftMenu />
+                            </div>
+                            {/*Main Content*/}
+                            <div className="col-xs-11">
+                                <LogoBlock />
+                                <MainMenu />
+                                <HomeContent />
+                            </div>
+                        </div>
                     </main>
-                    <Footer />
+                    <footer className="footer">
+                        <Footer />
+                    </footer>
                 </div>
             </MuiThemeProvider>
         );

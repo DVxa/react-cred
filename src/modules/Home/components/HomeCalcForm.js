@@ -74,21 +74,20 @@ export default class HomeCalcForm extends Component {
     }
     btnCreateOfferHandler() {
         //browserHistory.push("/offernew"); -- Временно
-        browserHistory.push("/offernew");
-        /*
-         this.state.amountValue + "#" +
-         this.state.periodValue + "#" +
+        browserHistory.push("/offernew/" +
+         this.state.amountValue + "/" +
+         this.state.periodValue + "/" +
          this.state.rateValue
-        */
+        );
     }
     render() {
         return (
             <div>
                 <div className="calculator clearfix">
                     <div className="scrollers">
-                        <i className="triangle-icon"></i>
+                        {/*<i className="triangle-icon"></i>*/}
                         <div className="scroller clearfix">
-                            <div className="col-xs-12 scroller__body">
+                            <div className="col-xs-11 scroller__body">
                                 <Slider style={styles.sliderStyle}
                                         min={3000}
                                         max={50000}
@@ -102,7 +101,7 @@ export default class HomeCalcForm extends Component {
                                 {/*<span className="scroller__body__line__from">{this.props.minValue}</span>
                                  <span className="scroller__body__line__to">{this.props.maxValue}</span>*/}
                             </div>
-                            <div className="col-xs-1 scroller__input">
+                            <div className="col-xs-2 scroller__input">
                                 <TextField
                                     style={{padding: '3px', width: '80px', fontSize: '20px'}}
                                     value={this.state.amountValue}
@@ -113,7 +112,7 @@ export default class HomeCalcForm extends Component {
                             </div>
                         </div>
                         <div className="scroller clearfix">
-                            <div className="col-xs-12 scroller__body">
+                            <div className="col-xs-11 scroller__body">
                                 <Slider style={styles.sliderStyle}
                                         min={1}
                                         max={48}
@@ -125,7 +124,7 @@ export default class HomeCalcForm extends Component {
                                         onChange={this.onChangePeriodHandler}
                                 />
                             </div>
-                            <div className="col-xs-1 scroller__input">
+                            <div className="col-xs-2 scroller__input">
                                 <TextField
                                     style={{padding: '3px', width: '80px', fontSize: '20px'}}
                                     value={this.state.periodValue}
@@ -136,7 +135,7 @@ export default class HomeCalcForm extends Component {
                             </div>
                         </div>
                         <div className="scroller clearfix">
-                            <div className="col-xs-12 scroller__body">
+                            <div className="col-xs-11 scroller__body">
                                 <Slider style={styles.sliderStyle}
                                         min={0}
                                         max={2.0}
@@ -148,7 +147,7 @@ export default class HomeCalcForm extends Component {
                                         onChange={this.onChangeRateHandler}
                                 />
                             </div>
-                            <div className="col-xs-1 scroller__input">
+                            <div className="col-xs-2 scroller__input">
                                 <TextField
                                     style={{padding: '3px', width: '80px', fontSize: '20px'}}
                                     value={this.state.rateValue}
@@ -191,16 +190,16 @@ export default class HomeCalcForm extends Component {
                                 />
                             </div>
                         </div>
-                        <div style={styles.divCalcBlock}>
-                            <div className="col-xs-12">
-                                <RaisedButton label='Подать заявку'
-                                              style={{marginTop: '10px'}}
-                                              onClick={this.btnCreateOfferHandler}
-                                              secondary={true}
-                                              href={""}
-                                              fullWidth={true}
-                                />
-                            </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-xs-11">
+                        </div>
+                        <div className="col-xs-3">
+                            <RaisedButton label='Подать заявку'
+                                          style={{marginTop: '10px'}}
+                                          onClick={this.btnCreateOfferHandler}
+                                          secondary={true}
+                            />
                         </div>
                     </div>
                 </div>

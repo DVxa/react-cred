@@ -11,13 +11,16 @@ export default class OfferCreateContent extends Component {
     render() {
         return(
             <div>
-                <div className="gray-layout row-padding">
+                <div className="row-padding">
                     <div className="wrapper clearfix">
                         <Paper style={{padding: '20px'}}>
                             <div className="row">
 
                                 <div className="col-xs-9">
-                                    <OfferCreateForm />
+                                    <OfferCreateForm amount={this.props.amount}
+                                                     period={this.props.period}
+                                                     rate={this.props.rate}
+                                    />
                                 </div>
                                 <div className="col-xs-4 col-xs-offset-1">
                                     <div className="row">

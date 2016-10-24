@@ -15,13 +15,14 @@ import {Link } from 'react-router';
 import Subheader from 'material-ui/Subheader';
 
 
-export default class RegistrationContent extends Component {
+export default class TestContent extends Component {
     render() {
         return(
             <div>
-                <div className="gray-layout row-padding">
+                <div className="row-padding">
                     <div className="wrapper clearfix">
                         <Paper style={{padding: '20px'}}>
+                            <h1>Тестовая для просмотра страниц</h1>
                             <div className="row">
 
                                 <div className="col-xs-9">

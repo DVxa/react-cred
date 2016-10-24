@@ -1,20 +1,33 @@
+/**
+ * Created by V.Minyailov-book on 24.10.2016.
+ */
+
+
 import React, {Component} from 'react';
 import Paper from 'material-ui/Paper';
-import RegistrationForm from './RegistrationForm';
+import {List, ListItem} from 'material-ui/List';
+import Divider from 'material-ui/Divider';
+import ActionInfo from 'material-ui/svg-icons/action/info';
+import Add from 'material-ui/svg-icons/av/playlist-add';
+import Home from 'material-ui/svg-icons/action/home';
+import ListIco from 'material-ui/svg-icons/action/list';
+import UserAdd from 'material-ui/svg-icons/social/person-add';
+
 import {Link } from 'react-router';
+import Subheader from 'material-ui/Subheader';
 
 
-export default class RegistrationContent extends Component {
+export default class AbountContentContent extends Component {
     render() {
         return(
             <div>
                 <div className="row-padding">
                     <div className="wrapper clearfix">
                         <Paper style={{padding: '20px'}}>
-                            <h1>Регистрация клиента</h1>
+                            <h1>О проекте</h1>
                             <div className="row">
                                 <div className="col-xs-9">
-                                    <RegistrationForm />
+
                                 </div>
                                 <div className="col-xs-4 col-xs-offset-1">
                                     <div className="row">
@@ -23,7 +36,7 @@ export default class RegistrationContent extends Component {
                                     </div>
                                     <div className="row">
                                         <div className="col-xs-14">
-                                            <h4>Как правильно заполнить анкету?</h4>
+                                            <h4>Обратная связь</h4>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                                                 sed do eiusmod tempor incididunt ut labore et dolore
                                                 magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
@@ -41,6 +54,6 @@ export default class RegistrationContent extends Component {
                     <div className="wrapper clearfix"></div>
                 </div>
             </div>
-       );
+        );
     }
 }

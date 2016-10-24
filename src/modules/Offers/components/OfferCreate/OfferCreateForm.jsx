@@ -68,6 +68,13 @@ class OfferCreateForm extends Component {
 
     render() {
         let {amount, period, rate, offerType, delimiter} = this.props.form;
+
+        if(this.props.amount !== undefined) {
+            amount.value = this.props.amount;
+            period.value = this.props.period;
+            rate.value = this.props.rate;
+        }
+
         return (
 
             <form method="post" id="data" className="validatable">
