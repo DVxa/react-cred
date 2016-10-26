@@ -12,6 +12,7 @@ import IconButton from 'material-ui/IconButton';
 import NavMoreVert from 'material-ui/svg-icons/navigation/more-vert';
 import MenuItem from 'material-ui/MenuItem';
 import Avatar from 'material-ui/Avatar';
+import {browserHistory} from 'react-router';
 
 const btnStyles = {
     fontSize: '18px',
@@ -33,7 +34,9 @@ export default class Header extends Component {
         this.state = {
             modalIsOpen: false,
             open: true,
-            value: 3
+            value: 3,
+            login: '',
+            password: ''
         };
         this.openModal      = this.openModal.bind(this);
         this.closeModal     = this.closeModal.bind(this);
@@ -44,7 +47,52 @@ export default class Header extends Component {
     closeModal () {
         this.setState({modalIsOpen: false});
     }
+
+    onEnterButtonClick = () => {
+        let body = JSON.stringify({
+            login: this.state.login,
+            password: this.state.password,
+        });
+        fetch(
+            'http://192.168.1.213:8077/user-profile/login',
+            {
+                method: 'post',
+                body: body,
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+            }
+        ).then(
+            (response) => {
+                if (response.status !== 200) {
+                    console.log('Looks like there was a problem. Status Code: ' + response.status);
+                    return;
+                }
+                return response.json();
+            },
+            (error) => {
+                console.log('Fetch Error: ', error);
+                return Promise.reject(error);
+            }
+        ).then((body) => {
+            if (body.status == true) {
+                localStorage.setItem('auth-token', body.result.token);
+                browserHistory.push('/offers/my');
+            }
+        });
+    };
+
+    onLoginChange = (event) => {
+        this.setState({login: event.target.value});
+    };
+
+    onPasswordChange = (event) => {
+        this.setState({password: event.target.value});
+    };
+
     handleChange = (event, index, value) => this.setState({value});
+
     render() {
 
         const actions = [
@@ -53,6 +101,7 @@ export default class Header extends Component {
                 style={btnStyles}
                 label="Вход"
                 secondary={true}
+                onClick={this.onEnterButtonClick}
             />,
             <FlatButton
                 label="Отмена"
@@ -124,6 +173,8 @@ export default class Header extends Component {
                         errorText=""
                         hintText="E-mail"
                         floatingLabelText="E-mail"
+                        onChange={this.onLoginChange}
+                        value={this.state.login}
                     />
 
                     <TextField
@@ -133,6 +184,8 @@ export default class Header extends Component {
                         errorText=""
                         hintText="Пароль"
                         floatingLabelText="Пароль"
+                        onChange={this.onPasswordChange}
+                        value={this.state.password}
                     />
 
                 </Dialog>
