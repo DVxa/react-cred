@@ -3,6 +3,8 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: [
+    'es6-promise/auto',
+    'whatwg-fetch',
     './src/index'
   ],
   output: {

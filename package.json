@@ -19,6 +19,7 @@
     "webpack-dev-server": "^1.10.*"
   },
   "dependencies": {
+    "es6-promise": "^4.0.5",
     "material-ui": "^0.15.4",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
@@ -30,6 +31,7 @@
     "sockjs-client": {
       "from": "sockjs-client@1.0.1",
       "version": "1.0.1"
-    }
+    },
+    "whatwg-fetch": "^1.0.0"
   }
 }
