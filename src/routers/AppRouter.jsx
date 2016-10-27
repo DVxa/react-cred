@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Router, Route, browserHistory } from 'react-router';
+import {AuthUtils} from 'AuthUtils';
 
 import { HomePage, AboutPage, FAQPage,
          RegistrationPage, OfferListPage,
@@ -18,7 +19,7 @@ export default class AppRouter extends Component {
                 <Route component={OfferCreatePage}  path="/offernew/:amount/:period/:rate"/>
                 <Route component={OfferCreatePage}  path="/offernew"/>
                 <Route component={OfferListPage}    path="/offers/:amount#:period#:rate"/>
-                <Route component={MyOfferListPage}  path="/offers/my"/>
+                <Route component={MyOfferListPage}  path="/offers/my" onEnter={checkAuth}/>
                 <Route component={OfferPage}        path="/offer/:offerId"/>
                 <Route component={UserProfilePage}  path="/profile"/>
                 <Route component={FAQPage}          path="/faq">
@@ -28,5 +29,13 @@ export default class AppRouter extends Component {
                 </Route>
             </Router>
         );
+    }
+}
+
+
+function checkAuth(nextState, replaceState) {
+    // let path = nextState.location.pathname;
+    if(!AuthUtils.isTokenExist()) {
+        replaceState('/home');
     }
 }
