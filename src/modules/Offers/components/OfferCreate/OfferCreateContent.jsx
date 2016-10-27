@@ -10,42 +10,36 @@ import {Link } from 'react-router';
 export default class OfferCreateContent extends Component {
     render() {
         return(
-            <div>
-                <div className="row-padding">
-                    <div className="wrapper clearfix">
-                        <Paper style={{padding: '20px'}}>
-                            <div className="row">
+            <div className="wrapper clearfix">
+                <Paper style={{padding: '20px'}}>
+                    <div className="row">
 
-                                <div className="col-xs-9">
-                                    <OfferCreateForm amount={this.props.amount}
-                                                     period={this.props.period}
-                                                     rate={this.props.rate}
-                                    />
-                                </div>
-                                <div className="col-xs-4 col-xs-offset-1">
-                                    <div className="row">
-                                        <div className="col-xs-14">
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col-xs-14">
-                                            <h4>Как правильно создать заявку</h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                                sed do eiusmod tempor incididunt ut labore et dolore
-                                                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                                ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                            </p>
-                                            <Link to="/faq/offer-new-borrow"> More ... </Link>
-                                        </div>
-                                    </div>
+                        <div className="col-xs-9">
+                            <OfferCreateForm type={this.props.type}
+                                             amount={this.props.amount}
+                                             period={this.props.period}
+                                             rate={this.props.rate}
+                            />
+                        </div>
+                        <div className="col-xs-4 col-xs-offset-1">
+                            <div className="row">
+                                <div className="col-xs-14">
                                 </div>
                             </div>
-                        </Paper>
+                            <div className="row">
+                                <div className="col-xs-14">
+                                    <h4>Как правильно создать заявку</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                        sed do eiusmod tempor incididunt ut labore et dolore
+                                        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                        ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    </p>
+                                    <Link to="/faq/offer-new-borrow"> More ... </Link>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div className="white-layout clearfix dealings">
-                    <div className="wrapper clearfix"></div>
-                </div>
+                </Paper>
             </div>
         );
     }

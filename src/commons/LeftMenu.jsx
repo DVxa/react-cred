@@ -7,6 +7,8 @@ import {List, ListItem} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 import Subheader from 'material-ui/Subheader';
 import {Link} from 'react-router';
+
+import AuthUtils from '../AuthUtils';
 // Icons
 import OfferAdd from 'material-ui/svg-icons/av/playlist-add';
 import ListIco from 'material-ui/svg-icons/action/list';
@@ -15,13 +17,19 @@ import UserSettings from 'material-ui/svg-icons/action/settings';
 import UserLogOut from 'material-ui/svg-icons/action/exit-to-app';
 
 export default class LeftMenu extends Component {
+
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
             <div>
                 <List style={{borderRight: "solid 1px rgb(76, 175, 80)"}}>
                     <Subheader>Заявки</Subheader>
-                    <Link to="/offernew"><ListItem primaryText="Создать заявку" leftIcon={<OfferAdd />} /></Link>
-                    <Link to="/offers/my"><ListItem primaryText="Список моих заявок" leftIcon={<ListIco />} /></Link>
+                    <Link to="/offer/new/borrow"><ListItem primaryText="Создать заявку на заем" leftIcon={<OfferAdd />} /></Link>
+                    <Link to="/offer/new/lend"><ListItem primaryText="Создать заявку на размещение" leftIcon={<OfferAdd />} /></Link>
+                    <Link to="/offers/borrow/my"><ListItem primaryText="Список моих заявок" leftIcon={<ListIco />} /></Link>
                     <Link to="/offers/borrow"><ListItem primaryText="Запросы" leftIcon={<ListIco />} /></Link>
                     <Link to="/offers/lend"><ListItem primaryText="Предложения" leftIcon={<ListIco />} /></Link>
                     <Divider />

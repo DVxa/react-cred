@@ -49,6 +49,14 @@ export default class Header extends Component {
     }
 
     onEnterButtonClick = () => {
+
+        localStorage.setItem('auth-token', '123213215646546546546564645');
+        localStorage.setItem('uid', this.state.login);
+        alert('Установлен пользователь ' + this.state.login);
+        this.setState({modalIsOpen: false});
+        browserHistory.push('/offers/borrow/my');
+
+        /*
         let body = JSON.stringify({
             login: this.state.login,
             password: this.state.password,
@@ -78,9 +86,11 @@ export default class Header extends Component {
         ).then((body) => {
             if (body.status == true) {
                 localStorage.setItem('auth-token', body.result.token);
+                localStorage.setItem('uid', body.result.id);
                 browserHistory.push('/offers/my');
             }
-        });
+        })
+        */;
     };
 
     onLoginChange = (event) => {
@@ -140,19 +150,6 @@ export default class Header extends Component {
                                 </IconMenu>
                             </ToolbarGroup>
                         </Toolbar>
-                        {/*
-                        <AppBar
-                            title="Касса взаимопомощи"
-                            showMenuIconButton={false}
-                            zDepth={1}
-                            onLeftIconButtonTouchTap={this.drawerHandleToggle}
-                        >
-                            <FlatButton style={btnStyles}
-                                        label="Вход / Регистрация"
-                                        onClick={this.openModal}
-                                        secondary={false}
-                            />
-                        </AppBar>*/}
                     </div>
                 </div>
                 <Dialog
@@ -163,7 +160,7 @@ export default class Header extends Component {
                     actions={actions}
                 >
                     <p>Впервые пользуетесь услугами нашего сервиса? Пожалуйста,
-                    <Link to="/register"> ЗАРЕГИСТРИРУЙТЕСЬ</Link></p>
+                    <Link to="/register" onClick={this.closeModal}> ЗАРЕГИСТРИРУЙТЕСЬ</Link></p>
                     <p>Если вы уже пользовались нашими услугами, пожалуйста, авторизуйтесь:</p>
 
                     <TextField

@@ -55,11 +55,11 @@ export default class OfferForm extends Component {
                         </div>
                         <div className="col-xs-3">
                              <h7>Дней</h7>
-                             <h2>28</h2>
+                             <h2>{this.state.offer.PERIOD}</h2>
                         </div>
                         <div className="col-xs-3">
                              <h7>%/день</h7>
-                             <h2>{this.state.offer.DAYPRC}</h2>
+                             <h2>{this.state.offer.RATE}</h2>
                         </div>
                         <div className="col-xs-5">
                             <h7>Возможность дробления</h7>
@@ -78,7 +78,7 @@ export default class OfferForm extends Component {
                             <h7>Сумма возврата</h7>
                             <h2>{this.state.offer.LOAN_SUMM +
                                  this.state.offer.LOAN_SUMM *
-                                 this.state.offer.DAYPRC / 100 * 12
+                                 this.state.offer.RATE / 100 * this.state.offer.PERIOD
                             }</h2>
                         </div>
                     </div>

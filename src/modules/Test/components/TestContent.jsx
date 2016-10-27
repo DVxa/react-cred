@@ -18,53 +18,45 @@ import Subheader from 'material-ui/Subheader';
 export default class TestContent extends Component {
     render() {
         return(
-            <div>
-                <div className="row-padding">
-                    <div className="wrapper clearfix">
-                        <Paper style={{padding: '20px'}}>
-                            <h1>Тестовая для просмотра страниц</h1>
+            <div className="wrapper clearfix">
+                <Paper style={{padding: '20px'}}>
+                    <div className="row">
+                        <div className="col-xs-9">
+                            <List>
+                                <Subheader>Основные</Subheader>
+                                <Link to="/home"><ListItem primaryText="Главная" leftIcon={<Home />}></ListItem></Link>
+                                <Link to="/about"><ListItem primaryText="О проекте" leftIcon={<ActionInfo />} /></Link>
+                                <Divider />
+                                <Subheader>Заявки</Subheader>
+                                <Link to="/offer/new/borrow"><ListItem primaryText="Создать заявку на заем" leftIcon={<Add />} /></Link>
+                                <Link to="/offer/new/lend"><ListItem primaryText="Создать заявку на размещение" leftIcon={<Add />} /></Link>
+                                <Link to="/offers/my"><ListItem primaryText="Список моих заявок" leftIcon={<ListIco />} /></Link>
+                                <Divider />
+                                <Subheader>Сделки</Subheader>
+                                <Divider />
+                                <Subheader>Учетные</Subheader>
+                                <Link to="/register"><ListItem primaryText="Регистрация" leftIcon={<UserAdd />} /></Link>
+                            </List>
+                        </div>
+                        <div className="col-xs-4 col-xs-offset-1">
                             <div className="row">
-
-                                <div className="col-xs-9">
-                                    <List>
-                                        <Subheader>Основные</Subheader>
-                                        <Link to="/home"><ListItem primaryText="Главная" leftIcon={<Home />}></ListItem></Link>
-                                        <Link to="/about"><ListItem primaryText="О проекте" leftIcon={<ActionInfo />} /></Link>
-                                        <Divider />
-                                        <Subheader>Заявки</Subheader>
-                                        <Link to="/offernew"><ListItem primaryText="Создать заявку" leftIcon={<Add />} /></Link>
-                                        <Link to="/offers/my"><ListItem primaryText="Список моих заявок" leftIcon={<ListIco />} /></Link>
-                                        <Divider />
-                                        <Subheader>Сделки</Subheader>
-                                        <Divider />
-                                        <Subheader>Учетные</Subheader>
-                                        <Link to="/register"><ListItem primaryText="Регистрация" leftIcon={<UserAdd />} /></Link>
-                                    </List>
-                                </div>
-                                <div className="col-xs-4 col-xs-offset-1">
-                                    <div className="row">
-                                        <div className="col-xs-14">
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col-xs-14">
-                                            <h4>Тестирование всех страничек</h4>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                                sed do eiusmod tempor incididunt ut labore et dolore
-                                                magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                                ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                            </p>
-                                            <Link to="/faq/register"> More ... </Link>
-                                        </div>
-                                    </div>
+                                <div className="col-xs-14">
                                 </div>
                             </div>
-                        </Paper>
+                            <div className="row">
+                                <div className="col-xs-14">
+                                    <h4>Тестирование всех страничек</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                        sed do eiusmod tempor incididunt ut labore et dolore
+                                        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                        ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    </p>
+                                    <Link to="/faq/register"> More ... </Link>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div className="white-layout clearfix dealings">
-                    <div className="wrapper clearfix"></div>
-                </div>
+                </Paper>
             </div>
         );
     }

@@ -5,12 +5,12 @@
 import React, {Component} from 'react';
 import Paper from 'material-ui/Paper';
 import {Link } from 'react-router';
-import MyOfferListTable from './MyOfferListTable';
+import OfferListTable from './OfferListTable';
 import RaisedButton from 'material-ui/RaisedButton';
 import {browserHistory} from 'react-router';
 
 
-export default class MyOfferListContent extends Component {
+export default class OfferListContent extends Component {
     constructor(props) {
         super(props);
         this.onBtnNewOfferClickHandler = this.onBtnNewOfferClickHandler.bind(this);
@@ -26,7 +26,7 @@ export default class MyOfferListContent extends Component {
                 <Paper style={{padding: '20px'}}>
                     <div className="row">
                         <div className="col-xs-10">
-                            <MyOfferListTable />
+                            <OfferListTable />
                         </div>
                         <div className="col-xs-3 col-xs-offset-1">
                             <div className="row">

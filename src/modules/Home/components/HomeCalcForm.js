@@ -74,7 +74,7 @@ export default class HomeCalcForm extends Component {
     }
     btnCreateOfferHandler() {
         //browserHistory.push("/offernew"); -- Временно
-        browserHistory.push("/offernew/" +
+        browserHistory.push("/offer/new/borrow/" +
          this.state.amountValue + "/" +
          this.state.periodValue + "/" +
          this.state.rateValue

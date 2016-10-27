@@ -8,7 +8,7 @@ import {Table, TableBody, TableFooter, TableHeader, TableHeaderColumn, TableRow,
 import RaisedButton from 'material-ui/RaisedButton';
 import {Link} from 'react-router';
 
-export default class MyOfferListTable extends Component {
+export default class OfferListTable extends Component {
 
     constructor(props) {
         super(props);
@@ -24,19 +24,13 @@ export default class MyOfferListTable extends Component {
     componentWillMount() {
     //getMyOffersData () {
         let self = this;
-
-        let uid = localStorage.getItem('uid');
-        let access_token = localStorage.getItem('auth-token');
-        console.log(uid + ' - ' + access_token);
-
         let promise = fetch (
-            'http://192.168.1.213:8077/request-loan/user-request/' + uid,
+            'http://192.168.1.213:8077/request-loan/user-request/1',
             {
                 method: 'GET',
                 headers: {
                     "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-                },
-                credentials: 'include'
+                }
             }
         ).then (
             function(response) {

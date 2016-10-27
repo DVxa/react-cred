@@ -14,6 +14,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Checkbox from 'material-ui/Checkbox';
 import * as OfferCreateActions from './OfferCreateActions';
+import AuthUtils from '../../../../AuthUtils';
 
 
 class OfferCreateForm extends Component {
@@ -23,24 +24,23 @@ class OfferCreateForm extends Component {
     }
 
     onOfferCreateButtonClickHandler() {
-        let {amount, period, rate, offerType, delimiter} = this.props.form;
+        let {amount, period, rate, delimiter} = this.props.form;
+        let offerType = this.props.type;
 
         var body =
-            'amount=' + encodeURIComponent(amount.value) +
+            'uid='     + encodeURIComponent(localStorage.getItem('uid')) +
+            '&type='   + encodeURIComponent(this.props.type)  +
+            '&amount=' + encodeURIComponent(amount.value) +
             '&period=' + encodeURIComponent(period.value) +
-            '&rate=' + encodeURIComponent(rate.value) +
-            '&type=borrow' +
+            '&rate='   + encodeURIComponent(rate.value) +
             '&delimiter=false';
-
-        /*'&type=' + encodeURIComponent(offerType.value) +
-        '&delimiter=' + encodeURIComponent(delimiter.value);*/
 
         console.log(body);
 
         let promise = fetch (
             'http://192.168.1.213:8077/request-loan/add-request',
             {
-                method: 'post',
+                method: 'POST',
                 body: body,
                 headers: {
                     "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
@@ -54,10 +54,9 @@ class OfferCreateForm extends Component {
                     return;
                 }
                 response.json().then(function (data) {
-                    console.log(data);
                     if (data.status == "OK") {
                         alert ("Заявка создана!");
-                        browserHistory.push('/offers/my');
+                        browserHistory.push('/offers/'+ offerType +'/my');
                     }
                 });
             }
@@ -121,11 +120,12 @@ class OfferCreateForm extends Component {
                     </div>
                     <div className="col-xs-7">
                         <RadioButtonGroup name="offerType"
-                                          defaultSelected={offerType.value}
+                                          defaultSelected={this.props.type}
                                           onChange={this.props.actions.setOfferType}
                                           valid={offerType.valid}
                                           dirty={offerType.dirty}
                                           errors={offerType.errors}
+                                          valueSelected={this.props.type}
                         >
                             <RadioButton
                                 value="borrow"

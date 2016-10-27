@@ -9,13 +9,13 @@ import OfferPage from './Offers/OfferPage';
 import OfferCreatePage from './Offers/OfferCreatePage';
 import MyOfferListPage from './Offers/MyOfferListPage'
 import TestPage from './Test/TestPage';
-
 import UserProfilePage from './UserProfile/UserProfilePage';
+import LogoutPage from './UserProfile/LogoutPage';
 
 export {
     HomePage,       AboutPage,
     FAQPage,        RegistrationPage,
     OfferListPage,  OfferPage,
     OfferCreatePage,MyOfferListPage,
-    TestPage, UserProfilePage
+    TestPage, UserProfilePage, LogoutPage
 };
