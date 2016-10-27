@@ -25,8 +25,8 @@ export default class AppRouter extends Component {
                     <Route component={MyOfferListPage}  path="/offers/:type/my" onEnter={checkAuth}/>
                     <Route component={OfferPage}        path="/offer/:offerId"  onEnter={checkAuth}/>
                     <Route component={OfferCreatePage}  path="/offer/new/:type(/:amount)(/:period)(/:rate)" onEnter={checkAuth}/>
+                    <Route component={UserProfilePage}  path="/profile"         onEnter={checkAuth}/>
                 </Route>
-                <Route component={UserProfilePage}  path="/profile" onEnter={checkAuth}/>
             </Router>
         );
     }
