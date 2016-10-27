@@ -13,6 +13,7 @@ import NavMoreVert from 'material-ui/svg-icons/navigation/more-vert';
 import MenuItem from 'material-ui/MenuItem';
 import Avatar from 'material-ui/Avatar';
 import {browserHistory} from 'react-router';
+import {AuthUtils} from "../AuthUtils";
 
 const btnStyles = {
     fontSize: '18px',
@@ -47,6 +48,10 @@ export default class Header extends Component {
     closeModal () {
         this.setState({modalIsOpen: false});
     }
+
+    onProfileButtonClick = () => {
+        browserHistory.push('/profile');
+    };
 
     onEnterButtonClick = () => {
 
@@ -133,10 +138,18 @@ export default class Header extends Component {
                             <ToolbarGroup>
                                 <ToolbarTitle text="Поиск" />
                                 <ToolbarSeparator />
+                                { !AuthUtils.isTokenExist() && (
                                 <RaisedButton label="Вход и регистрация"
                                               primary={true}
                                               onClick={this.openModal}
                                 />
+                                )}
+                                { AuthUtils.isTokenExist() && (
+                                    <RaisedButton label="Профиль пользователя"
+                                                  primary={true}
+                                                  onClick={this.onProfileButtonClick}
+                                    />
+                                )}
                                 <ToolbarSeparator />
                                 <IconMenu
                                     iconButtonElement={
