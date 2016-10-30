@@ -3,8 +3,7 @@ import { Link } from 'react-router';
 import Paper from 'material-ui/Paper';
 import { Step, Stepper, StepLabel} from 'material-ui/Stepper';
 
-import HomeCalcForm from './HomeCalcForm';
-import HomeAbout from './HomeAbout';
+import LenderCalcForm from './LenderCalcForm';
 
 
 const styles = {
@@ -19,7 +18,7 @@ const styles = {
     }
 };
 
-export default class HomeContent extends Component {
+export default class LenderContent extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -38,14 +37,14 @@ export default class HomeContent extends Component {
                 <div className="wrapper clearfix">
                     <div className="role">
                         <ul className="role-tabs clearfix">
-                            <li className="col-xs-7 current">
-                                <span>
-                                    Вы хотите взять в долг
-                                </span>
-                            </li>
                             <li className="col-xs-7">
                                 <span>
-                                    <Link to="/lender">Вы хотите дать в долг</Link>
+                                    <Link to="/">Вы хотите взять в долг</Link>
+                                </span>
+                            </li>
+                            <li className="col-xs-7 current">
+                                <span>
+                                    Вы хотите дать в долг
                                 </span>
                             </li>
                         </ul>
@@ -55,23 +54,18 @@ export default class HomeContent extends Component {
                                     <StepLabel style={styles.stepperStyles}>Рассчитайте суммы</StepLabel>
                                 </Step>
                                 <Step>
-                                    <StepLabel style={styles.stepperStyles}>Рассмотрите предложения</StepLabel>
+                                    <StepLabel style={styles.stepperStyles}>Рассмотрите запросы</StepLabel>
                                 </Step>
                                 <Step>
                                     <StepLabel style={styles.stepperStyles}>Заполните заявку</StepLabel>
                                 </Step>
                                 <Step>
-                                    <StepLabel style={styles.stepperStyles}>Получите деньги</StepLabel>
+                                    <StepLabel style={styles.stepperStyles}>Выдайте деньги</StepLabel>
                                 </Step>
                             </Stepper>
-                            <HomeCalcForm />
+                            <LenderCalcForm />
                             <div className="wrapper clearfix"></div>
                         </Paper>
-                    </div>
-                </div>
-                <div className="no-padding">
-                    <div className="wrapper clearfix">
-                        <HomeAbout />
                     </div>
                 </div>
                 <div className="white-layout clearfix dealings">

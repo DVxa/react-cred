@@ -35,6 +35,7 @@ export default class TestContent extends Component {
                                 <Subheader>Сделки</Subheader>
                                 <Divider />
                                 <Subheader>Учетные</Subheader>
+                                <Link to="/login"><ListItem primaryText="Вход в систему" leftIcon={<UserAdd />} /></Link>
                                 <Link to="/register"><ListItem primaryText="Регистрация" leftIcon={<UserAdd />} /></Link>
                             </List>
                         </div>

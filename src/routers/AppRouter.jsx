@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Router, Route, browserHistory } from 'react-router';
 import {AuthUtils} from 'AuthUtils';
 
-import { HomePage, AboutPage, FAQPage,
+import { HomePage, LenderPage, AboutPage, FAQPage,
          RegistrationPage, OfferListPage,
          OfferPage, OfferCreatePage, MyOfferListPage,
-         TestPage, UserProfilePage, LogoutPage
+         TestPage, UserProfilePage, LogoutPage, LoginPage
 } from '../modules/';
 
 import PageLayout from '../layouts/PageLayout';
@@ -15,9 +15,11 @@ export default class AppRouter extends Component {
         return (
             <Router history={browserHistory}>
                 <Route component={PageLayout}>
-                    <Route component={TestPage}         path="/"        onEnter={checkAuth}/>
+                    <Route component={TestPage}         path="/test"        onEnter={checkAuth}/>
+                    <Route component={LoginPage}        path="/login"/>
                     <Route component={LogoutPage}       path="/logout"/>
-                    <Route component={HomePage}         path="/home"/>
+                    <Route component={HomePage}         path="/"/>
+                    <Route component={LenderPage}         path="/lender"/>
                     <Route component={AboutPage}        path="/about"/>
                     <Route component={FAQPage}          path="/faq(/:class)(/:method)"/>
                     <Route component={RegistrationPage} path="/register"/>
@@ -36,6 +38,6 @@ export default class AppRouter extends Component {
 function checkAuth(nextState, replaceState) {
     // let path = nextState.location.pathname;
     if(!AuthUtils.isTokenExist()) {
-        replaceState('/home');
+        replaceState('/login');
     }
 }

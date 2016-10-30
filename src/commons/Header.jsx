@@ -9,7 +9,7 @@ import TextField from 'material-ui/TextField';
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 import IconMenu from 'material-ui/IconMenu';
 import IconButton from 'material-ui/IconButton';
-import NavMoreVert from 'material-ui/svg-icons/navigation/more-vert';
+import Settings from 'material-ui/svg-icons/action/settings';
 import MenuItem from 'material-ui/MenuItem';
 import Avatar from 'material-ui/Avatar';
 import {browserHistory} from 'react-router';
@@ -154,7 +154,7 @@ export default class Header extends Component {
                                 <IconMenu
                                     iconButtonElement={
                                         <IconButton touch={true}>
-                                            <NavMoreVert />
+                                            <Settings />
                                         </IconButton>
                                     }
                                 >

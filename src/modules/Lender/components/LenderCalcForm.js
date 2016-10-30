@@ -22,7 +22,7 @@ const styles ={
 
 
 
-export default class HomeCalcForm extends Component {
+export default class LenderCalcForm extends Component {
     constructor (props) {
         super(props);
         this.onChangeAmountHandler = this.onChangeAmountHandler.bind(this);
@@ -32,7 +32,7 @@ export default class HomeCalcForm extends Component {
         this.onChangeCalcElems     = this.onChangeCalcElems.bind(this);
 
         var dateToday = new Date();
-        dateToday.setDate(dateToday.getDate() + value);
+        dateToday.setDate(dateToday.getDate() + 14);
 
         this.state = {
             amountValue : 5000,
@@ -80,7 +80,7 @@ export default class HomeCalcForm extends Component {
     };
     btnCreateOfferHandler = () => {
         //browserHistory.push("/offernew"); -- Временно
-        browserHistory.push("/offer/new/borrow/" +
+        browserHistory.push("/offer/new/lend/" +
          this.state.amountValue + "/" +
          this.state.periodValue + "/" +
          this.state.rateValue
@@ -170,7 +170,7 @@ export default class HomeCalcForm extends Component {
                                 <TextField
                                     style={styles.textStyles}
                                     value={this.state.amountValue}
-                                    floatingLabelText="Возьмете:"
+                                    floatingLabelText="Разместите:"
                                     floatingLabelFixed={true}
                                 />
                             </div>
@@ -191,7 +191,7 @@ export default class HomeCalcForm extends Component {
                                 <TextField
                                     style={styles.textStyles}
                                     value={this.state.backAmountValue}
-                                    floatingLabelText="Отдадите:"
+                                    floatingLabelText="Получаете:"
                                     floatingLabelFixed={true}
                                 />
                             </div>

@@ -12,10 +12,10 @@ export default class MainMenu extends Component {
                 <Paper>
                     <ul className="top-menu elem4 clearfix">
                         <li className="">
-                            <Link to="/">Тестовая</Link>
+                            <Link to="/test">Тестовая</Link>
                         </li>
                         <li className="">
-                            <Link to="/home">Главная</Link>
+                            <Link to="/">Главная</Link>
                         </li>
                         <li className="">
                             <Link to="/about">О проекте</Link>

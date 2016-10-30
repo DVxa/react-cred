@@ -25,12 +25,11 @@ export default class LogoutContent  extends React.Component {
     onExitButtonClick = () => {
         localStorage.clear();
         this.closeModal();
-        browserHistory.push('/home');
+        browserHistory.push('/');
     };
 
     onCancelButtonClick = () => {
         this.closeModal();
-        browserHistory.push('/offers/borrow/my');
     };
 
     render() {
