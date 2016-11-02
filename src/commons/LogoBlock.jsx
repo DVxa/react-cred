@@ -16,7 +16,7 @@ export default class LogoBlock extends Component {
                     <img src="/static/dist/img/logo_sb1.png" alt="" width="250"/>
                     {/*<span>Человек человеку — банк</span>*/}
                 </div>
-                <div className="col-xs-10">
+                <div className="col-xs-9 col-xs-offset-1">
                     <p style={{marginTop: 10}}>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore

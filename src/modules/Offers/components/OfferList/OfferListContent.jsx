@@ -17,12 +17,16 @@ export default class OfferListContent extends Component {
     }
 
     onBtnNewOfferClickHandler = () => {
-        browserHistory.push('/offer/new/'
-            + (this.props.offerType == "borrow" ? "lend" : "borrow") + '/' +
-            + this.props.offerAmount + '/' +
-            + this.props.offerPeriod + '/' +
-            + this.props.offerRate
-        );
+
+        let type   = this.props.offerType   == "borrow"  ? "/lend" : "/borrow";
+        let amount = this.props.offerAmount != undefined ? '/' + this.props.offerAmount : '';
+        let period = this.props.offerPeriod != undefined ? '/' + this.props.offerPeriod : '';
+        let rate   = this.props.offerRate   != undefined ? '/' + this.props.offerRate   : '';
+
+        let url = '/offer/new' + type + amount + period + rate;
+
+        //console.log(url);
+        browserHistory.push(url);
     };
 
     render() {

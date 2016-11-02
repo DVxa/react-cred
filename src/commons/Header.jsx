@@ -129,7 +129,18 @@ export default class Header extends Component {
             <header className="header">
                 <div className="row">
                     <div className="col-xs-14">
-                        <Toolbar>
+                        <AppBar
+                            title={<span>Касса взаимопомощи</span>}
+                            showMenuIconButton={false}
+                            iconElementRight={
+                                <FlatButton label="Вход и регистрация"
+                                            onClick={this.openModal}
+                                            primary={true}
+                                />
+                            }
+                        />
+                        {/*
+                        <Toolbar style={{borderBottom: "solid 1px rgb(76, 175, 80)"}}>
                             <ToolbarGroup firstChild={true}>
                                 <ToolbarTitle text="Касса взаимопомощи"
                                               style={{paddingLeft:30}}
@@ -162,7 +173,7 @@ export default class Header extends Component {
                                     <MenuItem primaryText="More Info" />
                                 </IconMenu>
                             </ToolbarGroup>
-                        </Toolbar>
+                        </Toolbar>*/}
                     </div>
                 </div>
                 <Dialog

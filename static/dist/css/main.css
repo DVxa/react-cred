@@ -162,6 +162,7 @@ html {
 
 body {
   margin: 0;
+  background-color: #efefef;
 }
 
 article,
@@ -1553,7 +1554,7 @@ body {
   font-size: 14px;
   line-height: 1.42857;
   color: #333333;
-  background-color: #fff;
+  background-color: #efefef;
 }
 
 input,
@@ -10060,7 +10061,7 @@ form .button-container {
 }
 
 .about-project {
-  padding: 35px 0 45px 0;
+  //padding: 35px 0 45px 0;
   font-size: 20px;
 }
 .about-project .wrapper {
@@ -12026,10 +12027,10 @@ ol ol {
   padding-bottom: 33px;
 }
 .role .role-tabs {
-  margin-top: 10px;
+  //margin-top: 10px;
   clear: both;
   list-style: none;
-  margin-bottom: 26px;
+  //margin-bottom: 26px;
   padding: 0;
 }
 .role .role-tabs li {

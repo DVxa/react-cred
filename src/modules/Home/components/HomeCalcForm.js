@@ -10,10 +10,10 @@ const styles ={
         width: '100%'
     },
     sliderStyle: {
-        height: '24px',
-        marginTop: '6px',
-        marginBottom: '6px',
-        fontSize: '18px'
+        height: 24,
+        marginTop: 6,
+        marginBottom: 6,
+        fontSize: 18
     },
     divCalcBlock: {
         margin: '0 0 0 30px'
@@ -97,7 +97,7 @@ export default class HomeCalcForm extends Component {
                                         min={3000}
                                         max={30000}
                                         step={1000}
-                                        sliderStyle={{marginBottom: '16px', marginTop: '8px'}}
+                                        sliderStyle={{marginBottom: 16, marginTop: 8, backgroungColor: 'red'}}
                                         defaultValue={5000}
                                         description="Сумма заявки"
                                         value={this.state.amountValue}
@@ -165,34 +165,33 @@ export default class HomeCalcForm extends Component {
                     </div>
                     <div className="calculator-result">
                         <div style={styles.divCalcBlock}>
-                            <div className="col-xs-12">
-                                <TextField
-                                    style={styles.textStyles}
-                                    value={this.state.amountValue}
-                                    floatingLabelText="Возьмете:"
-                                    floatingLabelFixed={true}
-                                />
-                            </div>
-
-                        </div>
-                        <div style={styles.divCalcBlock}>
-                            <div className="col-xs-12">
-                                <TextField
-                                    style={styles.textStyles}
-                                    value={this.state.backDate}
-                                    floatingLabelText="До:"
-                                    floatingLabelFixed={true}
-                                />
+                            <div className="row">
+                                <div className="col-xs-6">
+                                    <h4>Возьмете:</h4>
+                                </div>
+                                <div className="col-xs-8">
+                                    <h1>{this.state.amountValue}</h1>
+                                </div>
                             </div>
                         </div>
                         <div style={styles.divCalcBlock}>
-                            <div className="col-xs-12">
-                                <TextField
-                                    style={styles.textStyles}
-                                    value={this.state.backAmountValue}
-                                    floatingLabelText="Отдадите:"
-                                    floatingLabelFixed={true}
-                                />
+                            <div className="row">
+                                <div className="col-xs-3">
+                                    <h4>До:</h4>
+                                </div>
+                                <div className="col-xs-11">
+                                    <h1>{this.state.backDate}</h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div style={styles.divCalcBlock}>
+                            <div className="row">
+                                <div className="col-xs-6">
+                                    <h4>Отдадите:</h4>
+                                </div>
+                                <div className="col-xs-8">
+                                    <h1>{this.state.backAmountValue}</h1>
+                                </div>
                             </div>
                         </div>
                     </div>

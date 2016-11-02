@@ -17,7 +17,7 @@ export default class MyOfferListContent extends Component {
     }
 
     onBtnNewOfferClickHandler() {
-        browserHistory.push('/offer/new/borrow');
+        browserHistory.push('/offer/new/' + this.props.offerType);
     }
 
     render() {
@@ -26,7 +26,7 @@ export default class MyOfferListContent extends Component {
                 <Paper style={{padding: '20px'}}>
                     <div className="row">
                         <div className="col-xs-9">
-                            <MyOfferListTable />
+                            <MyOfferListTable offerType={this.props.offerType}/>
                         </div>
                         <div className="col-xs-4 col-xs-offset-1">
                             <div className="row">

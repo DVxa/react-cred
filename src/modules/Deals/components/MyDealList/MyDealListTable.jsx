@@ -109,8 +109,8 @@ export default class MyDealListTable extends Component {
                         <TableRowColumn style={{fontSize: 18}}>{elem.Amount}</TableRowColumn>
                         <TableRowColumn style={{fontSize: 18}}>{elem.Period}</TableRowColumn>
                         <TableRowColumn style={{fontSize: 18}}>{elem.Rate}</TableRowColumn>
-                        <TableRowColumn style={{fontSize: 18}}>{elem.DateEnd}</TableRowColumn>
-                        <TableRowColumn style={{fontSize: 18}}>{elem.AllRest}</TableRowColumn>
+                        <TableRowColumn style={{fontSize: 18, backgroundColor: "rgb(255, 152, 0)"}}>{elem.DateEnd}</TableRowColumn>
+                        <TableRowColumn style={{fontSize: 18, backgroundColor: "rgb(255, 152, 0)"}}>{elem.AllRest}</TableRowColumn>
 
                         <TableRowColumn>
                             {/*<RaisedButton label="открыть"
@@ -118,7 +118,7 @@ export default class MyDealListTable extends Component {
                                           onClick={(e) => this.onOfferMoreButtonClickHandler}
                                           value={elem.ID}
                             />*/}
-                            <Link to={"/deal/" + elem.ID}>More ...</Link>
+                            <Link to={"/deal/" + elem.ID}>Просмотр</Link>
                         </TableRowColumn>
                     </TableRow>
                     ))}

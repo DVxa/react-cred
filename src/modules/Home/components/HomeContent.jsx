@@ -74,9 +74,6 @@ export default class HomeContent extends Component {
                         <HomeAbout />
                     </div>
                 </div>
-                <div className="white-layout clearfix dealings">
-                    <div className="wrapper clearfix"></div>
-                </div>
             </div>
         )
     }
