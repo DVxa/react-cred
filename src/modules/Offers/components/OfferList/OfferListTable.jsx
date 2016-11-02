@@ -6,7 +6,7 @@ import React, {Component} from 'react';
 import {Table, TableBody, TableFooter, TableHeader, TableHeaderColumn, TableRow, TableRowColumn}
     from 'material-ui/Table';
 import RaisedButton from 'material-ui/RaisedButton';
-import {Link} from 'react-router';
+import {Link, browserHistory} from 'react-router';
 
 export default class OfferListTable extends Component {
 
@@ -28,14 +28,18 @@ export default class OfferListTable extends Component {
             'http://192.168.1.213:8077/request-loan/user-request/1',
             {
                 method: 'GET',
-                headers: {
-                    "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-                }
+                headers: { "Content-type": "application/x-www-form-urlencoded; charset=UTF-8" },
+                credentials: 'include'
             }
         ).then (
             function(response) {
                 if (response.status !== 200) {
-                    console.log('Status Code: ' + response.status);
+                    if (response.status == 401) {
+                        console.error('Error: ' + response.status + " - " + response.statusText);
+                        browserHistory.push('/login');
+                    } else {
+                        console.error('Stat Code: ' + response.status + " - " + response.statusText);
+                    }
                     return;
                 }
                 response.json().then(function (data) {
