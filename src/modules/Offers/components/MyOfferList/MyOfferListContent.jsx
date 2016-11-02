@@ -17,7 +17,7 @@ export default class MyOfferListContent extends Component {
     }
 
     onBtnNewOfferClickHandler() {
-        browserHistory.push('offernew');
+        browserHistory.push('/offer/new/borrow');
     }
 
     render() {
@@ -25,10 +25,10 @@ export default class MyOfferListContent extends Component {
             <div className="wrapper clearfix">
                 <Paper style={{padding: '20px'}}>
                     <div className="row">
-                        <div className="col-xs-10">
+                        <div className="col-xs-9">
                             <MyOfferListTable />
                         </div>
-                        <div className="col-xs-3 col-xs-offset-1">
+                        <div className="col-xs-4 col-xs-offset-1">
                             <div className="row">
                                 <div className="col-xs-14">
                                 </div>

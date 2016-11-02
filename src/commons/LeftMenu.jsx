@@ -16,6 +16,7 @@ import Login from 'material-ui/svg-icons/action/input';
 import Register from 'material-ui/svg-icons/social/person-add';
 import UserSettings from 'material-ui/svg-icons/action/settings';
 import UserLogOut from 'material-ui/svg-icons/action/exit-to-app';
+import DealIco from 'material-ui/svg-icons/editor/attach-money';
 
 import {AuthUtils} from '../AuthUtils';
 
@@ -31,16 +32,22 @@ export default class LeftMenu extends Component {
                 <List style={{borderRight: "solid 1px rgb(76, 175, 80)"}}>
                     <Subheader>Заявки</Subheader>
                     <Link to="/offer/new/borrow"><ListItem primaryText="Создать заявку на заем" leftIcon={<OfferAdd />} /></Link>
-                    <Link to="/offer/new/lend"><ListItem primaryText="Создать заявку на размещение" leftIcon={<OfferAdd />} /></Link>
+                    <Link to="/offer/new/lend"><ListItem primaryText="Создать предложение" leftIcon={<OfferAdd />} /></Link>
                     { AuthUtils.isTokenExist() && (
                         <div>
                             <Link to="/offers/borrow/my"><ListItem primaryText="Список моих заявок" leftIcon={<ListIco />} /></Link>
-                            <Link to="/offers/borrow"><ListItem primaryText="Запросы" leftIcon={<ListIco />} /></Link>
+                            <Link to="/offers/borrow"><ListItem primaryText="Заявки на заем" leftIcon={<ListIco />} /></Link>
                             <Link to="/offers/lend"><ListItem primaryText="Предложения" leftIcon={<ListIco />} /></Link>
                         </div>
                     )}
                     <Divider />
-                    <Subheader>Сделки</Subheader>
+                    { AuthUtils.isTokenExist() && (
+                        <div>
+                            <Subheader>Мои сделки</Subheader>
+                                <Link to="/deals/borrow/my"><ListItem primaryText="По займам" leftIcon={<DealIco />} /></Link>
+                                <Link to="/deals/lend/my"><ListItem primaryText="По размещению" leftIcon={<DealIco />} /></Link>
+                        </div>
+                        )}
                     <Divider />
                     <Subheader>Учетные</Subheader>
                     { !AuthUtils.isTokenExist() && (

@@ -10,10 +10,10 @@ export default class MainMenu extends Component {
         return (
             <div className="wrapper clearfix">
                 <Paper>
-                    <ul className="top-menu elem4 clearfix">
-                        <li className="">
+                    <ul className="top-menu elem3 clearfix">
+                        {/*<li className="">
                             <Link to="/test">Тестовая</Link>
-                        </li>
+                        </li>*/}
                         <li className="">
                             <Link to="/">Главная</Link>
                         </li>

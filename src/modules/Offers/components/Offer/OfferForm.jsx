@@ -4,14 +4,18 @@
 import React, {Component} from 'react';
 import {browserHistory} from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
 
+import { AuthUtils } from '../../../../AuthUtils';
 
 export default class OfferForm extends Component {
     constructor(props) {
         super(props);
         this.state = {offer : []};
         this.onDealCreateButtonClickHandler = this.onDealCreateButtonClickHandler.bind(this);
+        this.onOfferToArchButtonClickHandler = this.onOfferToArchButtonClickHandler.bind(this);
     }
+
 
     componentWillMount() {
         //getMyOffersData () {
@@ -32,7 +36,7 @@ export default class OfferForm extends Component {
                 }
                 response.json().then(function (data) {
                     self.setState({offer: data});
-                    console.log(data);
+                    //console.log(data);
                 });
             }
         ).catch(function(err) {
@@ -40,9 +44,13 @@ export default class OfferForm extends Component {
         });
     }
 
-    onDealCreateButtonClickHandler() {
+    onDealCreateButtonClickHandler = () => {
         alert("Создать заявку пока нет возможности");
-    }
+    };
+
+    onOfferToArchButtonClickHandler = () => {
+        alert("Перенос в архив недоступен");
+    };
 
     render() {
         return (
@@ -87,11 +95,19 @@ export default class OfferForm extends Component {
                     </div>
                     <div className="row">
                         <div className="col-xs-4"></div>
-                        <div className="col-xs-6">
+                        <div className="col-xs-5">
                             <RaisedButton label="Оформить сделку"
                                           secondary={true}
                                           onClick={this.onDealCreateButtonClickHandler}
                             />
+                        </div>
+                        <div className="col-xs-5">
+                            { AuthUtils.isTokenExist() && (
+                            <FlatButton label="Перенести в архив"
+                                          secondary={true}
+                                          onClick={this.onOfferToArchButtonClickHandler}
+                            />
+                            )}
                         </div>
                         <div className="col-xs-4"></div>
                     </div>

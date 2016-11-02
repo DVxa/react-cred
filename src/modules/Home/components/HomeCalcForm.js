@@ -32,7 +32,7 @@ export default class HomeCalcForm extends Component {
         this.onChangeCalcElems     = this.onChangeCalcElems.bind(this);
 
         var dateToday = new Date();
-        dateToday.setDate(dateToday.getDate() + value);
+        dateToday.setDate(dateToday.getDate() + 14);
 
         this.state = {
             amountValue : 5000,
@@ -79,8 +79,7 @@ export default class HomeCalcForm extends Component {
 
     };
     btnCreateOfferHandler = () => {
-        //browserHistory.push("/offernew"); -- Временно
-        browserHistory.push("/offer/new/borrow/" +
+        browserHistory.push("/offers/lend/" +
          this.state.amountValue + "/" +
          this.state.periodValue + "/" +
          this.state.rateValue

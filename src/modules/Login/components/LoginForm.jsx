@@ -97,7 +97,9 @@ class LoginForm extends Component {
                 </div>
                 <div className="row">
                     <div className="col-xs-6">
-                        <Link to="/remind-password" className="gray-link">Забыли логин или пароль?</Link>
+                        <div className="row-padding">
+                            <Link to="/remind-password" className="gray-link">Забыли логин или пароль?</Link>
+                        </div>
                     </div>
                     <div className="col-xs-4 button-container">
                         <RaisedButton

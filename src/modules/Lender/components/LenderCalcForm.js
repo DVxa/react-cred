@@ -79,11 +79,10 @@ export default class LenderCalcForm extends Component {
 
     };
     btnCreateOfferHandler = () => {
-        //browserHistory.push("/offernew"); -- Временно
-        browserHistory.push("/offer/new/lend/" +
-         this.state.amountValue + "/" +
-         this.state.periodValue + "/" +
-         this.state.rateValue
+        browserHistory.push("/offers/borrow/" +
+            this.state.amountValue + "/" +
+            this.state.periodValue + "/" +
+            this.state.rateValue
         );
     };
     render() {

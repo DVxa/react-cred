@@ -8,7 +8,7 @@ import {Table, TableBody, TableFooter, TableHeader, TableHeaderColumn, TableRow,
 import RaisedButton from 'material-ui/RaisedButton';
 import {Link} from 'react-router';
 
-export default class MyOfferListTable extends Component {
+export default class MyDealListTable extends Component {
 
     constructor(props) {
         super(props);
@@ -29,6 +29,39 @@ export default class MyOfferListTable extends Component {
         let access_token = localStorage.getItem('auth-token');
         console.log(uid + ' - ' + access_token);
 
+        let deals = [
+            {   "ID"            : "1",
+                "UserLender"    : "1",
+                "UserBorrower"  : "2",
+                "State_ref"     : "1",
+                "OfferId_ref"   : "1",
+                "DateDeal"      : "01.11.2016",
+                "Amount"        : "10000",
+                "Period"        : "14",
+                "Rate"          : "0.1",
+                "AllRest"       : "10285",
+                "PercRest"      : "250",
+                "ComissRest"    : "35",
+                "DateEnd"       : "15.11.2016"
+            },
+            {   "ID"            : "2",
+                "UserLender"    : "2",
+                "UserBorrower"  : "3",
+                "State_ref"     : "1",
+                "OfferId_ref"   : "1",
+                "DateDeal"      : "01.11.2016",
+                "Amount"        : "15000",
+                "Period"        : "12",
+                "Rate"          : "0.1",
+                "AllRest"       : "15430",
+                "PercRest"      : "290",
+                "ComissRest"    : "40",
+                "DateEnd"       : "13.11.2016"
+            }
+        ];
+        self.setState({deals: deals});
+
+        /*
         let promise = fetch (
             'http://192.168.1.213:8077/request-loan/user-request/' + uid,
             {
@@ -51,6 +84,7 @@ export default class MyOfferListTable extends Component {
         ).catch(function(err) {
             console.log('Fetch Error: ', err);
         });
+        */
     }
 
     render () {
@@ -64,22 +98,27 @@ export default class MyOfferListTable extends Component {
                         <TableHeaderColumn>Сумма</TableHeaderColumn>
                         <TableHeaderColumn>Период</TableHeaderColumn>
                         <TableHeaderColumn>Ставка (%/дн)</TableHeaderColumn>
+                        <TableHeaderColumn>Возврат</TableHeaderColumn>
+                        <TableHeaderColumn>Сумма</TableHeaderColumn>
                         <TableHeaderColumn>Подробности</TableHeaderColumn>
                     </TableRow>
                 </TableHeader>
                 <TableBody displayRowCheckbox={false}>
-                    {this.state.offers.map((elem, index) => (
+                    {this.state.deals.map((elem, index) => (
                     <TableRow key={index} data-item={elem.ID} onClick={this.onOfferMoreButtonClickHandler}>
-                        <TableRowColumn style={{fontSize: 18}}>{elem.LOAN_SUMM}</TableRowColumn>
-                        <TableRowColumn style={{fontSize: 18}}>{elem.PERIOD}</TableRowColumn>
-                        <TableRowColumn style={{fontSize: 18}}>{elem.RATE}</TableRowColumn>
+                        <TableRowColumn style={{fontSize: 18}}>{elem.Amount}</TableRowColumn>
+                        <TableRowColumn style={{fontSize: 18}}>{elem.Period}</TableRowColumn>
+                        <TableRowColumn style={{fontSize: 18}}>{elem.Rate}</TableRowColumn>
+                        <TableRowColumn style={{fontSize: 18}}>{elem.DateEnd}</TableRowColumn>
+                        <TableRowColumn style={{fontSize: 18}}>{elem.AllRest}</TableRowColumn>
+
                         <TableRowColumn>
                             {/*<RaisedButton label="открыть"
                                           secondary={true}
-                                          onClick={this.onOfferMoreButtonClickHandler}
+                                          onClick={(e) => this.onOfferMoreButtonClickHandler}
                                           value={elem.ID}
                             />*/}
-                            <Link to={"/offer/" + elem.ID}>More ...</Link>
+                            <Link to={"/deal/" + elem.ID}>More ...</Link>
                         </TableRowColumn>
                     </TableRow>
                     ))}

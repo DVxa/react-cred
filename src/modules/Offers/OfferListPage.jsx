@@ -12,7 +12,7 @@ export default class OfferListPage extends Component {
                     <div className="row">
                         <div className="col-xs-14">
                             <h1 style={{paddingTop:10, paddingBottom: 10}}>
-                                Заявки на {this.props.params.type == 'borrow' ? 'заем' : 'размещение'} по вашему запросу</h1>
+                                {this.props.params.type == 'borrow' ? 'Заявки на заем' : 'Предложения'}, которые могут быть Вам интересны</h1>
                         </div>
                     </div>
                 </div>

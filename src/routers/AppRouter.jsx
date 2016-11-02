@@ -5,7 +5,8 @@ import {AuthUtils} from 'AuthUtils';
 import { HomePage, LenderPage, AboutPage, FAQPage,
          RegistrationPage, OfferListPage,
          OfferPage, OfferCreatePage, MyOfferListPage,
-         TestPage, UserProfilePage, LogoutPage, LoginPage
+         TestPage, UserProfilePage, LogoutPage, LoginPage,
+         MyDealListPage
 } from '../modules/';
 
 import PageLayout from '../layouts/PageLayout';
@@ -15,18 +16,21 @@ export default class AppRouter extends Component {
         return (
             <Router history={browserHistory}>
                 <Route component={PageLayout}>
-                    <Route component={TestPage}         path="/test"        onEnter={checkAuth}/>
-                    <Route component={LoginPage}        path="/login"/>
-                    <Route component={LogoutPage}       path="/logout"/>
+                    <Route component={TestPage}         path="/test"            onEnter={checkAuth}/>
                     <Route component={HomePage}         path="/"/>
-                    <Route component={LenderPage}         path="/lender"/>
+                    <Route component={LenderPage}       path="/lender"/>
                     <Route component={AboutPage}        path="/about"/>
                     <Route component={FAQPage}          path="/faq(/:class)(/:method)"/>
-                    <Route component={RegistrationPage} path="/register"/>
-                    <Route component={OfferListPage}    path="/offers/:type"    onEnter={checkAuth}/>
-                    <Route component={MyOfferListPage}  path="/offers/:type/my" onEnter={checkAuth}/>
+
+                    <Route component={OfferListPage}    path="/offers/:type(/:amount)(/:period)(/:rate)"    onEnter={checkAuth}/>
+                    <Route component={MyOfferListPage}  path="/offers/my/:type" onEnter={checkAuth}/>
                     <Route component={OfferPage}        path="/offer/:offerId"  onEnter={checkAuth}/>
                     <Route component={OfferCreatePage}  path="/offer/new/:type(/:amount)(/:period)(/:rate)" onEnter={checkAuth}/>
+                    <Route component={MyDealListPage}   path="/deals/:type/my"  onEnter={checkAuth}/>
+
+                    <Route component={LoginPage}        path="/login"/>
+                    <Route component={LogoutPage}       path="/logout"/>
+                    <Route component={RegistrationPage} path="/register"/>
                     <Route component={UserProfilePage}  path="/profile"         onEnter={checkAuth}/>
                 </Route>
             </Router>

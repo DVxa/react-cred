@@ -130,12 +130,10 @@ class OfferCreateForm extends Component {
                             <RadioButton
                                 value="borrow"
                                 label="Заявка на заем"
-                                disabled={true}
                             />
                             <RadioButton
                                 value="lend"
                                 label="Заявка на размещение"
-                                disabled={true}
                             />
                         </RadioButtonGroup>
                     </div>
