@@ -30,6 +30,7 @@ export default class LogoutContent  extends React.Component {
 
     onCancelButtonClick = () => {
         this.closeModal();
+        browserHistory.goBack;
     };
 
     render() {

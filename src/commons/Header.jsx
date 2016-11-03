@@ -6,14 +6,19 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Dialog from 'material-ui/Dialog';
 import TextField from 'material-ui/TextField';
 
+import UserLogOut from 'material-ui/svg-icons/action/exit-to-app';
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 import IconMenu from 'material-ui/IconMenu';
 import IconButton from 'material-ui/IconButton';
 import Settings from 'material-ui/svg-icons/action/settings';
 import MenuItem from 'material-ui/MenuItem';
 import Avatar from 'material-ui/Avatar';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+
 import {browserHistory} from 'react-router';
 import {AuthUtils} from "../AuthUtils";
+
+
 
 const btnStyles = {
     fontSize: '18px',
@@ -37,7 +42,8 @@ export default class Header extends Component {
             open: true,
             value: 3,
             login: '',
-            password: ''
+            password: '',
+            logged: AuthUtils.isTokenExist()
         };
         this.openModal      = this.openModal.bind(this);
         this.closeModal     = this.closeModal.bind(this);
@@ -50,6 +56,7 @@ export default class Header extends Component {
     }
 
     onProfileButtonClick = () => {
+        this.setState({logged: false});
         browserHistory.push('/profile');
     };
 
@@ -59,6 +66,7 @@ export default class Header extends Component {
         localStorage.setItem('uid', this.state.login);
         alert('Установлен пользователь ' + this.state.login);
         this.setState({modalIsOpen: false});
+        this.setState({logged: true});
         browserHistory.push('/offers/borrow/my');
 
         /*
@@ -108,6 +116,10 @@ export default class Header extends Component {
 
     handleChange = (event, index, value) => this.setState({value});
 
+    onBtnLogOutClickHandler = () => {
+        browserHistory.push("/logout");
+    };
+
     render() {
 
         const actions = [
@@ -133,10 +145,15 @@ export default class Header extends Component {
                             title={<span>Касса взаимопомощи</span>}
                             showMenuIconButton={false}
                             iconElementRight={
-                                <FlatButton label="Вход и регистрация"
-                                            onClick={this.openModal}
-                                            primary={true}
-                                />
+                                this.state.logged ?
+                                    <IconButton onClick={this.onBtnLogOutClickHandler}>
+                                        <UserLogOut/>
+                                    </IconButton>
+                                    :
+                                    <FlatButton label="Вход и регистрация"
+                                                onClick={this.openModal}
+                                                primary={true}
+                                    />
                             }
                         />
                         {/*
