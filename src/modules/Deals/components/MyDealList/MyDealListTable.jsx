@@ -3,92 +3,54 @@
  */
 
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+
 import {Table, TableBody, TableFooter, TableHeader, TableHeaderColumn, TableRow, TableRowColumn}
     from 'material-ui/Table';
-import RaisedButton from 'material-ui/RaisedButton';
 import {Link} from 'react-router';
+import CircularProgress from 'material-ui/CircularProgress';
+import { ApiClient } from '../../../../utils/ApiClient';
+import * as MyDealListActions from './MyDealListActions';
 
-export default class MyDealListTable extends Component {
+class MyDealListTable extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {offers : []};
-        //this.getMyOffersData = this.getMyOffersData.bind(this);
-        this.onOfferMoreButtonClickHandler = this.onOfferMoreButtonClickHandler.bind(this);
-    }
-
-    onOfferMoreButtonClickHandler = (e) => {
-        console.log(e.target.getAttribute('value'));
+        this.state = {};
     };
 
-    componentWillMount() {
-    //getMyOffersData () {
-        let self = this;
+    getData = (url) => {
+        this.props.actions.getDealData(url)
+    };
 
-        let uid = localStorage.getItem('uid');
-        let access_token = localStorage.getItem('auth-token');
-        console.log(uid + ' - ' + access_token);
+    componentDidMount = () => {
+        this.getData(this.props.url);
+    };
 
-        let deals = [
-            {   "ID"            : "1",
-                "UserLender"    : "1",
-                "UserBorrower"  : "2",
-                "State_ref"     : "1",
-                "OfferId_ref"   : "1",
-                "DateDeal"      : "01.11.2016",
-                "Amount"        : "10000",
-                "Period"        : "14",
-                "Rate"          : "0.1",
-                "AllRest"       : "10285",
-                "PercRest"      : "250",
-                "ComissRest"    : "35",
-                "DateEnd"       : "15.11.2016"
-            },
-            {   "ID"            : "2",
-                "UserLender"    : "2",
-                "UserBorrower"  : "3",
-                "State_ref"     : "1",
-                "OfferId_ref"   : "1",
-                "DateDeal"      : "01.11.2016",
-                "Amount"        : "15000",
-                "Period"        : "12",
-                "Rate"          : "0.1",
-                "AllRest"       : "15430",
-                "PercRest"      : "290",
-                "ComissRest"    : "40",
-                "DateEnd"       : "13.11.2016"
-            }
-        ];
-        self.setState({deals: deals});
-
-        /*
-        let promise = fetch (
-            'http://192.168.1.213:8077/request-loan/user-request/' + uid,
-            {
-                method: 'GET',
-                headers: {
-                    "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-                },
-                credentials: 'include'
-            }
-        ).then (
-            function(response) {
-                if (response.status !== 200) {
-                    console.log('Status Code: ' + response.status);
-                    return;
-                }
-                response.json().then(function (data) {
-                    self.setState({offers: data});
-                });
-            }
-        ).catch(function(err) {
-            console.log('Fetch Error: ', err);
-        });
-        */
-    }
+    componentWillReceiveProps = (nextProps) => {
+        if (nextProps.url != this.props.url) {
+            this.getData(this.props.url);
+        }
+    };
 
     render () {
-//        this.getMyOffersData();
+        let {deals} = this.props.list;
+        console.log(deals);
+
+        if (deals.error) {
+            console.error(deals.error);
+            return;
+        }
+
+        while (deals.fetching) {
+            return (
+                <div style={{width: '100%', height: 200, textAlign: 'center', verticalAlign: 'middle'}}>
+                    <CircularProgress />
+                </div>
+            )
+        }
+
         return (
             <Table>
                 <TableHeader adjustForCheckbox={false}
@@ -104,20 +66,14 @@ export default class MyDealListTable extends Component {
                     </TableRow>
                 </TableHeader>
                 <TableBody displayRowCheckbox={false}>
-                    {this.state.deals.map((elem, index) => (
-                    <TableRow key={index} data-item={elem.ID} onClick={this.onOfferMoreButtonClickHandler}>
+                    {deals.data.map((elem, index) => (
+                    <TableRow key={index} data-item={elem.ID} onClick={() => this.onOfferMoreButtonClickHandler(elem.ID)}>
                         <TableRowColumn style={{fontSize: 18}}>{elem.Amount}</TableRowColumn>
                         <TableRowColumn style={{fontSize: 18}}>{elem.Period}</TableRowColumn>
                         <TableRowColumn style={{fontSize: 18}}>{elem.Rate}</TableRowColumn>
-                        <TableRowColumn style={{fontSize: 18, backgroundColor: "rgb(255, 152, 0)"}}>{elem.DateEnd}</TableRowColumn>
-                        <TableRowColumn style={{fontSize: 18, backgroundColor: "rgb(255, 152, 0)"}}>{elem.AllRest}</TableRowColumn>
-
+                        <TableRowColumn style={{fontSize: 18}}>{elem.DateEnd}</TableRowColumn>
+                        <TableRowColumn style={{fontSize: 18}}>{elem.AllRest}</TableRowColumn>
                         <TableRowColumn>
-                            {/*<RaisedButton label="открыть"
-                                          secondary={true}
-                                          onClick={(e) => this.onOfferMoreButtonClickHandler}
-                                          value={elem.ID}
-                            />*/}
                             <Link to={"/deal/" + elem.ID}>Просмотр</Link>
                         </TableRowColumn>
                     </TableRow>
@@ -127,3 +83,17 @@ export default class MyDealListTable extends Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        list: state.lists.myDeals,
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(MyDealListActions, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyDealListTable)

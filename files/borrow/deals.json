@@ -1,0 +1,32 @@
+[
+            {
+                "ID": "1",
+                "UserLender": "1",
+                "UserBorrower": "2",
+                "State_ref": "1",
+                "OfferId_ref": "1",
+                "DateDeal": "01.11.2016",
+                "Amount": "20000",
+                "Period": "14",
+                "Rate": "0.1",
+                "AllRest": "10285",
+                "PercRest": "250",
+                "ComissRest": "35",
+                "DateEnd": "15.11.2016"
+            },
+            {
+                "ID": "2",
+                "UserLender": "2",
+                "UserBorrower": "3",
+                "State_ref": "1",
+                "OfferId_ref": "1",
+                "DateDeal": "01.11.2016",
+                "Amount": "25000",
+                "Period": "12",
+                "Rate": "0.1",
+                "AllRest": "15430",
+                "PercRest": "290",
+                "ComissRest": "40",
+                "DateEnd": "13.11.2016"
+            }
+        ]

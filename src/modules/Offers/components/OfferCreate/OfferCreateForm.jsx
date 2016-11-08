@@ -14,7 +14,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Checkbox from 'material-ui/Checkbox';
 import * as OfferCreateActions from './OfferCreateActions';
-import AuthUtils from '../../../../AuthUtils';
+import AuthUtils from '../../../../utils/AuthUtils';
 
 
 class OfferCreateForm extends Component {

@@ -21,7 +21,10 @@ export default class MyDealListPage extends Component {
                         </div>
                     </div>
                 </div>
-                <MyOfferListContent offerType={this.props.params.type} />
+                <MyOfferListContent
+                    offerType={this.props.params.type}
+                    url={"http://localhost:8080/files/"+ this.props.params.type + "/deals.json"}
+                />
             </div>
         );
     }

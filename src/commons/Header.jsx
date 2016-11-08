@@ -16,7 +16,7 @@ import Avatar from 'material-ui/Avatar';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 
 import {browserHistory} from 'react-router';
-import {AuthUtils} from "../AuthUtils";
+import {AuthUtils} from "../utils/AuthUtils";
 
 
 

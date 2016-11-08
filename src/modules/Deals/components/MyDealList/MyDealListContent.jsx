@@ -17,7 +17,7 @@ export default class MyDealListContent extends Component {
                 <Paper style={{padding: '20px'}}>
                     <div className="row">
                         <div className="col-xs-14">
-                            <MyDealListTable />
+                            <MyDealListTable url={this.props.url}/>
                         </div>
                     </div>
                 </Paper>

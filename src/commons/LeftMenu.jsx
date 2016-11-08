@@ -22,7 +22,7 @@ import DealUpIco from 'material-ui/svg-icons/file/file-upload';
 import MessIco from 'material-ui/svg-icons/communication/email';
 import AlertIco from 'material-ui/svg-icons/social/notifications';
 
-import {AuthUtils} from '../AuthUtils';
+import {AuthUtils} from '../utils/AuthUtils';
 
 export default class LeftMenu extends Component {
 

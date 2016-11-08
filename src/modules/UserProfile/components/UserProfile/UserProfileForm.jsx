@@ -43,20 +43,22 @@ export default class UserProfileForm extends Component {
                 </div>
                 <div className="row">
                     <div className="col-xs-7">
-                        <SelectField
-                            floatingLabelText="Регион"
-                            disabled={false}
-                            value={this.state.selectRegionValue}
-                        >
-                            <MenuItem value={1} primaryText="Москва" />
-                            <MenuItem value={2} primaryText="Санкт-Петербург" />
-                            <MenuItem value={3} primaryText="Новосибирск" />
-                            <MenuItem value={4} primaryText="Рязань" />
-                            <MenuItem value={5} primaryText="Тюмень" />
-                            <MenuItem value={6} primaryText="Омск" />
-                            <MenuItem value={7} primaryText="Барнаул" />
-                            <MenuItem value={8} primaryText="Вологда" />
-                        </SelectField>
+                        <div>
+                            <SelectField
+                                floatingLabelText="Регион"
+                                disabled={false}
+                                value={this.state.selectRegionValue}
+                            >
+                                <MenuItem value={1} primaryText="Москва" />
+                                <MenuItem value={2} primaryText="Санкт-Петербург" />
+                                <MenuItem value={3} primaryText="Новосибирск" />
+                                <MenuItem value={4} primaryText="Рязань" />
+                                <MenuItem value={5} primaryText="Тюмень" />
+                                <MenuItem value={6} primaryText="Омск" />
+                                <MenuItem value={7} primaryText="Барнаул" />
+                                <MenuItem value={8} primaryText="Вологда" />
+                            </SelectField>
+                        </div>
                     </div>
                     <div className="col-xs-7">
                         <SelectField

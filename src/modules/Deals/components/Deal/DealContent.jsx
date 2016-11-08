@@ -3,11 +3,11 @@
  */
 import React, {Component} from 'react';
 import Paper from 'material-ui/Paper';
-import OfferForm from './DealrForm';
+import DealForm from './DealrForm';
 import {Link } from 'react-router';
 
 
-export default class OfferContent extends Component {
+export default class DealContent extends Component {
     render() {
         return(
             <div className="wrapper clearfix">
@@ -15,7 +15,7 @@ export default class OfferContent extends Component {
                     <div className="row">
 
                         <div className="col-xs-9">
-                            <OfferForm offerId={this.props.offerId}/>
+                            <DealForm dealId={this.props.dealId}/>
                         </div>
                         <div className="col-xs-4 col-xs-offset-1">
                             <div className="row">

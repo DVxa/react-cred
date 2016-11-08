@@ -17,14 +17,12 @@ import LogoutPage from './UserProfile/LogoutPage';
 import LoginPage from './Login/LoginPage';
 // Сделки
 import MyDealListPage from './Deals/MyDealListPage';
+import DealPage from './Deals/DealPage';
 
 export {
-    HomePage,       LenderPage,
-    AboutPage,
-    FAQPage,        RegistrationPage,
-    OfferListPage,  OfferPage,
-    OfferCreatePage,MyOfferListPage,
-    TestPage, UserProfilePage, LogoutPage,
-    LoginPage, MyDealListPage
+    HomePage,           LenderPage,    AboutPage,       FAQPage,            TestPage,
+    RegistrationPage,   LogoutPage,    LoginPage,       UserProfilePage,
+    MyOfferListPage,    OfferListPage, OfferPage,       OfferCreatePage,
+    MyDealListPage,     DealPage
 };
 

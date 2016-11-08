@@ -6,7 +6,7 @@ import {browserHistory} from 'react-router';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 
-import { AuthUtils } from '../../../../AuthUtils';
+import { AuthUtils } from '../../../../utils/AuthUtils';
 
 export default class OfferForm extends Component {
     constructor(props) {

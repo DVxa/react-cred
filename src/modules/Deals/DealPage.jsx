@@ -3,20 +3,20 @@
  */
 
 import React, { Component } from 'react';
-import OfferContent from './components/Offer/OfferContent';
+import DealContent from './components/Deal/DealContent';
 
-export default class OfferPage extends Component {
+export default class DealPage extends Component {
     render(){
         return(
             <div>
                 <div className="wrapper clearfix">
                     <div className="row">
                         <div className="col-xs-14">
-                            <h1 style={{paddingTop:10, paddingBottom: 10}}>Заявка # {this.props.params.offerId}</h1>
+                            <h1 style={{paddingTop:10, paddingBottom: 10}}>Сделка # {this.props.params.dealId}</h1>
                         </div>
                     </div>
                 </div>
-                <OfferContent offerId={this.props.params.offerId} />
+                <DealContent dealId={this.props.params.dealId} />
             </div>
         )
     }
