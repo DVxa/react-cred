@@ -43,7 +43,7 @@ class MyDealListTable extends Component {
             return;
         }
 
-        while (deals.fetching) {
+        if (deals.fetching) {
             return (
                 <div style={{width: '100%', height: 200, textAlign: 'center', verticalAlign: 'middle'}}>
                     <CircularProgress />

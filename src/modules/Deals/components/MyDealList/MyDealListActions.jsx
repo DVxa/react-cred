@@ -26,7 +26,7 @@ export function getDealData(url) {
 
         ApiClient.get(url)
             .then((data) => {
-                dispach({
+                dispatch({
                     type: 'GET_DEALS_SUCCESS',
                     payload: data
                 })
