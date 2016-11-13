@@ -3,66 +3,59 @@
  */
 import React, {Component} from 'react';
 import {browserHistory} from 'react-router';
-import AmountInput from '../inputs/AmountlInput';
-import PeriodInput from '../inputs/PeriodlInput';
-import RateInput from '../inputs/RateInput';
-import DelimiterCheck from '../inputs/DelimiterCheck';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
 import RaisedButton from 'material-ui/RaisedButton';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
 import Checkbox from 'material-ui/Checkbox';
-import * as OfferCreateActions from './OfferCreateActions';
-import AuthUtils from '../../../../utils/AuthUtils';
+import Subheader from 'material-ui/Subheader';
+import Divider from 'material-ui/Divider';
+
+import AmountInput from './AmountlInput';
+import PeriodInput from './PeriodlInput';
+import RateInput from './RateInput';
+import DelimiterCheck from './DelimiterCheck';
+
+import * as OfferCreateActions from '../../../../actions/OfferCreateActions';
+
+import {AuthUtils} from '../../../../utils/AuthUtils';
+import {ApiClient} from '../../../../utils/ApiClient';
+
+import {PATH_TO_SERVER} from '../../../../utils/Constants';
 
 
 class OfferCreateForm extends Component {
     constructor(props) {
         super(props);
-        this.onOfferCreateButtonClickHandler = this.onOfferCreateButtonClickHandler.bind(this);
     }
 
-    onOfferCreateButtonClickHandler() {
+    onOfferCreateButtonClickHandler = () => {
         let {amount, period, rate, delimiter} = this.props.form;
-        let offerType = this.props.type;
+        let offerType   = this.props.type;
+        let uid         = AuthUtils.getUid();
+        let token       = AuthUtils.getToken();
 
         var body =
-            'uid='     + encodeURIComponent(localStorage.getItem('uid')) +
-            '&type='   + encodeURIComponent(this.props.type)  +
+            'uid='     + encodeURIComponent(uid) +
+            '&type='   + encodeURIComponent(offerType)  +
             '&amount=' + encodeURIComponent(amount.value) +
             '&period=' + encodeURIComponent(period.value) +
             '&rate='   + encodeURIComponent(rate.value) +
             '&delimiter=false';
 
+        let url = PATH_TO_SERVER + "request-loan/add-request";
+
         console.log(body);
 
-        let promise = fetch (
-            'http://192.168.1.213:8077/request-loan/add-request',
-            {
-                method: 'POST',
-                body: body,
-                headers: {
-                    "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+        ApiClient.post(url, body)
+            .then(
+                (data) => {
+                    console.log(data);
+                    alert ("Заявка создана!");
+                    browserHistory.push('/offers/'+ offerType +'/my');
                 }
-            }
-        ).then(
-            function(response) {
-                if (response.status !== 200) {
-                    console.log('Status Code: ' +
-                        response.status);
-                    return;
-                }
-                response.json().then(function (data) {
-                    if (data.status == "OK") {
-                        alert ("Заявка создана!");
-                        browserHistory.push('/offers/'+ offerType +'/my');
-                    }
-                });
-            }
-        ).catch(function(err) {
-            console.log('Fetch Error: ', err);
-        });
+            );
     }
 
     render() {
@@ -77,10 +70,11 @@ class OfferCreateForm extends Component {
         return (
 
             <form method="post" id="data" className="validatable">
-                <input type="hidden" name="agreementSigned" value="true" />
-                <input type="hidden" name="leadId" value="0" />
+                <Subheader style={styles.subheader}>
+                    Введите данные по заявке
+                </Subheader>
                 <div className="row">
-                    <div className="col-xs-5">
+                    <div className="col-xs-10 col-xs-offset-2">
                         <AmountInput
                             value={amount.value}
                             valid={amount.valid}
@@ -89,7 +83,9 @@ class OfferCreateForm extends Component {
                             onChange={this.props.actions.setAmount}
                         />
                     </div>
-                    <div className="col-xs-5">
+                </div>
+                <div className="row">
+                    <div className="col-xs-5 col-xs-offset-2">
                         <PeriodInput
                             value={period.value}
                             valid={period.valid}
@@ -98,7 +94,7 @@ class OfferCreateForm extends Component {
                             onChange={this.props.actions.setPeriod}
                         />
                     </div>
-                    <div className="col-xs-4">
+                    <div className="col-xs-5">
                         <RateInput
                             value={rate.value}
                             valid={rate.valid}
@@ -108,9 +104,8 @@ class OfferCreateForm extends Component {
                         />
                     </div>
                 </div>
-                <div className="row separator-top"></div>
                 <div className="row">
-                    <div className="col-xs-7">
+                    <div className="col-xs-10 col-xs-offset-2">
                         <Checkbox
                             label="Возможно дробление заявки"
                             value={delimiter.value}
@@ -118,9 +113,10 @@ class OfferCreateForm extends Component {
                             disabled={true}
                         />
                     </div>
-                    <div className="col-xs-7">
-                        <RadioButtonGroup name="offerType"
-                                          defaultSelected={this.props.type}
+                </div>
+                <div className="row">
+                    <div className="col-xs-10 col-xs-offset-2">
+                        <RadioButtonGroup defaultSelected={this.props.type}
                                           onChange={this.props.actions.setOfferType}
                                           valid={offerType.valid}
                                           dirty={offerType.dirty}
@@ -138,33 +134,37 @@ class OfferCreateForm extends Component {
                         </RadioButtonGroup>
                     </div>
                 </div>
-
-                <div className="row">
-                    <div className="col-xs-offset-7 col-xs-8 button-container">
+                <Divider />
+                <div className="row" style={{marginTop: 10}}>
+                    <div className="col-xs-4 col-xs-offset-10">
                         <RaisedButton
                             label="Создать заявку"
                             onClick={this.onOfferCreateButtonClickHandler}
                             secondary={true}
                             disabled={false}
+                            fullWidth={true}
                         />
                     </div>
-                    <div className="col-xs-4"></div>
                 </div>
             </form>
         )
     }
 }
 
+const styles = {
+    subheader: {
+        backgroundColor: "#efefef"
+    }
+};
+
 function mapStateToProps(state) {
     return {
         form: state.forms.offerCreate,
     }
 }
-
 function mapDispatchToProps(dispatch) {
     return {
         actions: bindActionCreators(OfferCreateActions, dispatch)
     }
 }
-
 export default connect(mapStateToProps, mapDispatchToProps)(OfferCreateForm);

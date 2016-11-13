@@ -18,10 +18,8 @@ export default class LogoBlock extends Component {
                 </div>
                 <div className="col-xs-9 col-xs-offset-1">
                     <p style={{marginTop: 10}}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                        ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                        Ваши коллеги всегда смогут прийти на выручку в случае финансово затруднительной ситуации.
+                        Процент, под который можно оформить заем, очень выгодно отличается от внешних краудлендинговых площадок.
                     </p>
                 </div>
             </div>

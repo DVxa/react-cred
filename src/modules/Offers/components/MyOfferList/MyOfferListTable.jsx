@@ -3,58 +3,61 @@
  */
 
 import React, {Component} from 'react';
+import {Link} from 'react-router';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import RaisedButton from 'material-ui/RaisedButton';
+
 import {Table, TableBody, TableFooter, TableHeader, TableHeaderColumn, TableRow, TableRowColumn}
     from 'material-ui/Table';
-import RaisedButton from 'material-ui/RaisedButton';
-import {Link} from 'react-router';
+import CircularProgress from 'material-ui/CircularProgress';
+import * as MyOfferListActions from '../../../../actions/MyOfferListActions';
 
-export default class MyOfferListTable extends Component {
+class MyOfferListTable extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {offers : []};
-        //this.getMyOffersData = this.getMyOffersData.bind(this);
-        this.onOfferMoreButtonClickHandler = this.onOfferMoreButtonClickHandler.bind(this);
+        this.state = {};
     }
 
     onOfferMoreButtonClickHandler = (e) => {
         console.log(e.target.getAttribute('value'));
     };
 
-    componentWillMount() {
-    //getMyOffersData () {
-        let self = this;
+    getData = (url) => {
+        this.props.actions.getOfferData(url)
+    };
 
-        let uid = localStorage.getItem('uid');
-        let access_token = localStorage.getItem('auth-token');
-        console.log(uid + ' - ' + access_token);
+    componentDidMount = () => {
+        this.getData(this.props.url);
+    };
 
-        let promise = fetch (
-            'http://192.168.1.213:8077/request-loan/user-request/' + uid,
-            {
-                method: 'GET',
-                headers: {
-                    "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-                },
-                credentials: 'include'
-            }
-        ).then (
-            function(response) {
-                if (response.status !== 200) {
-                    console.log('Status Code: ' + response.status);
-                    return;
-                }
-                response.json().then(function (data) {
-                    self.setState({offers: data});
-                });
-            }
-        ).catch(function(err) {
-            console.log('Fetch Error: ', err);
-        });
-    }
+    componentWillReceiveProps = (nextProps) => {
+        if (nextProps.url != this.props.url) {
+            this.getData(this.props.url);
+        }
+    };
+
+    onBtnOfferAcceptClickHandler = (e) => {
+        console.log(e);
+    };
 
     render () {
-//        this.getMyOffersData();
+        let {offers} = this.props.list;
+
+        if (offers.error) {
+            console.error(offers.error);
+            return;
+        }
+
+        if (offers.fetching) {
+            return (
+                <div style={{width: '100%', height: 200, textAlign: 'center', padding: 120}}>
+                    <CircularProgress />
+                </div>
+            )
+        }
+
         return (
             <Table>
                 <TableHeader adjustForCheckbox={false}
@@ -64,22 +67,27 @@ export default class MyOfferListTable extends Component {
                         <TableHeaderColumn>Сумма</TableHeaderColumn>
                         <TableHeaderColumn>Период</TableHeaderColumn>
                         <TableHeaderColumn>Ставка (%/дн)</TableHeaderColumn>
+                        <TableHeaderColumn></TableHeaderColumn>
                         <TableHeaderColumn>Подробности</TableHeaderColumn>
                     </TableRow>
                 </TableHeader>
                 <TableBody displayRowCheckbox={false}>
-                    {this.state.offers.map((elem, index) => (
+                    {offers.data.map((elem, index) => (
                     <TableRow key={index} data-item={elem.ID} onClick={this.onOfferMoreButtonClickHandler}>
                         <TableRowColumn style={{fontSize: 18}}>{elem.LOAN_SUMM}</TableRowColumn>
                         <TableRowColumn style={{fontSize: 18}}>{elem.PERIOD}</TableRowColumn>
                         <TableRowColumn style={{fontSize: 18}}>{elem.RATE}</TableRowColumn>
+                        <TableRowColumn style={{fontSize: 18}}>
+                        {(elem.ID == 1) ?
+                            <RaisedButton
+                                label="Выдать"
+                                primary={true}
+                                onClick={this.onBtnOfferAcceptClickHandler}
+                            /> : <div />
+                        }
+                        </TableRowColumn>
                         <TableRowColumn>
-                            {/*<RaisedButton label="открыть"
-                                          secondary={true}
-                                          onClick={this.onOfferMoreButtonClickHandler}
-                                          value={elem.ID}
-                            />*/}
-                            <Link to={"/offer/" + elem.ID}>More ...</Link>
+                            <Link to={"/offer/" + elem.ID}>Подробнее</Link>
                         </TableRowColumn>
                     </TableRow>
                     ))}
@@ -88,3 +96,17 @@ export default class MyOfferListTable extends Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        list: state.lists.myOffers,
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(MyOfferListActions, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MyOfferListTable)

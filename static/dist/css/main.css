@@ -11475,8 +11475,8 @@ input:focus, input:active, textarea:focus, textarea:active {
 }
 
 html input[disabled] {
-  border: 1px solid #cecece !important;
-  color: #bdbebe !important;
+  --border: 1px solid #cecece !important;
+  --color: #bdbebe !important;
 }
 
 .error-elem input[type="text"], .error-elem input[type="password"], .error-elem input[type="file"], .error-elem textarea, .error-elem button.btn.dropdown-toggle {
@@ -12047,7 +12047,7 @@ ol ol {
   line-height: 1;
   display: inline-block;
   position: relative;
-  margin-left: 65px;
+  //margin-left: 65px;
 }
 .role .role-tabs li span a, .role .role-tabs li span a:active, .role .role-tabs li span a:hover, .role .role-tabs li span a:visited {
   color: rgb(76, 175, 80);
@@ -12101,8 +12101,8 @@ ol ol {
   /*font-weight: bold;
   font-size: 33px;
   padding: 0;*/
-  font-weight: bold;
-  font-size: 30px;
+  //font-weight: bold;
+  font-size: 24px;
   padding: 10px 0;
   background-color: white;
   box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5);

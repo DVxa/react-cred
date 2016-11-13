@@ -4,6 +4,7 @@ import HomePage from './Home/HomePage';
 import LenderPage from './Lender/LenderPage';
 import AboutPage from './About/AboutPage';
 import FAQPage from './FAQ/FAQPage';
+import FeedbackPage from './Feedback/FeedbackPage';
 import TestPage from './Test/TestPage';
 // Заявки
 import OfferListPage from './Offers/OfferListPage';
@@ -20,7 +21,8 @@ import MyDealListPage from './Deals/MyDealListPage';
 import DealPage from './Deals/DealPage';
 
 export {
-    HomePage,           LenderPage,    AboutPage,       FAQPage,            TestPage,
+    HomePage,           LenderPage,    AboutPage,       FAQPage,
+    TestPage,           FeedbackPage,
     RegistrationPage,   LogoutPage,    LoginPage,       UserProfilePage,
     MyOfferListPage,    OfferListPage, OfferPage,       OfferCreatePage,
     MyDealListPage,     DealPage

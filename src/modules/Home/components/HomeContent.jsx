@@ -3,9 +3,8 @@ import { Link } from 'react-router';
 import Paper from 'material-ui/Paper';
 import { Step, Stepper, StepLabel} from 'material-ui/Stepper';
 
-import HomeCalcForm from './HomeCalcForm';
 import HomeAbout from './HomeAbout';
-
+import HomeCalcForm from './HomeCalcForm';
 
 const styles = {
     headline: {
@@ -15,23 +14,15 @@ const styles = {
         fontWeight: 400,
     },
     stepperStyles: {
-        fontSize: '20px'
+        fontSize: 20
     }
 };
 
 export default class HomeContent extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            tabValue: 1
-        }
+    }
 
-    }
-    tabChangeHandler(event, value) {
-        this.setState({
-            tabValue: value
-        });
-    }
     render() {
         return (
             <div className="row-padding">

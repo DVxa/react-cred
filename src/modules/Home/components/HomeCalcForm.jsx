@@ -10,10 +10,10 @@ const styles ={
         width: '100%'
     },
     sliderStyle: {
-        height: 24,
-        marginTop: 6,
-        marginBottom: 6,
-        fontSize: 18
+        height: '24px',
+        marginTop: '6px',
+        marginBottom: '6px',
+        fontSize: '18px'
     },
     divCalcBlock: {
         margin: '0 0 0 30px'
@@ -40,8 +40,8 @@ export default class HomeCalcForm extends Component {
             rateValue   : 0.2,
             backAmountValue: 5000 + 5000 * (0.2 + 0.05)/100 * 14,
             backDate    : ('0' + dateToday.getDate()).slice(-2) + '.' +
-                          ('0' + (dateToday.getMonth()+1)).slice(-2) + '.' +
-                          dateToday.getFullYear()
+            ('0' + (dateToday.getMonth()+1)).slice(-2) + '.' +
+            dateToday.getFullYear()
         };
     }
     onChangeCalcElems = () => {
@@ -80,9 +80,9 @@ export default class HomeCalcForm extends Component {
     };
     btnCreateOfferHandler = () => {
         browserHistory.push("/offers/lend/" +
-         this.state.amountValue + "/" +
-         this.state.periodValue + "/" +
-         this.state.rateValue
+            this.state.amountValue + "/" +
+            this.state.periodValue + "/" +
+            this.state.rateValue
         );
     };
     render() {
@@ -97,7 +97,7 @@ export default class HomeCalcForm extends Component {
                                         min={3000}
                                         max={30000}
                                         step={1000}
-                                        sliderStyle={{marginBottom: 16, marginTop: 8, backgroungColor: 'red'}}
+                                        sliderStyle={{marginBottom: '16px', marginTop: '8px'}}
                                         defaultValue={5000}
                                         description="Сумма заявки"
                                         value={this.state.amountValue}
@@ -165,33 +165,34 @@ export default class HomeCalcForm extends Component {
                     </div>
                     <div className="calculator-result">
                         <div style={styles.divCalcBlock}>
-                            <div className="row">
-                                <div className="col-xs-6">
-                                    <h4>Возьмете:</h4>
-                                </div>
-                                <div className="col-xs-8">
-                                    <h1>{this.state.amountValue}</h1>
-                                </div>
+                            <div className="col-xs-12">
+                                <TextField
+                                    style={styles.textStyles}
+                                    value={this.state.amountValue}
+                                    floatingLabelText="Возьмете:"
+                                    floatingLabelFixed={true}
+                                />
+                            </div>
+
+                        </div>
+                        <div style={styles.divCalcBlock}>
+                            <div className="col-xs-12">
+                                <TextField
+                                    style={styles.textStyles}
+                                    value={this.state.backDate}
+                                    floatingLabelText="До:"
+                                    floatingLabelFixed={true}
+                                />
                             </div>
                         </div>
                         <div style={styles.divCalcBlock}>
-                            <div className="row">
-                                <div className="col-xs-3">
-                                    <h4>До:</h4>
-                                </div>
-                                <div className="col-xs-11">
-                                    <h1>{this.state.backDate}</h1>
-                                </div>
-                            </div>
-                        </div>
-                        <div style={styles.divCalcBlock}>
-                            <div className="row">
-                                <div className="col-xs-6">
-                                    <h4>Отдадите:</h4>
-                                </div>
-                                <div className="col-xs-8">
-                                    <h1>{this.state.backAmountValue}</h1>
-                                </div>
+                            <div className="col-xs-12">
+                                <TextField
+                                    style={styles.textStyles}
+                                    value={this.state.backAmountValue}
+                                    floatingLabelText="Отдадите:"
+                                    floatingLabelFixed={true}
+                                />
                             </div>
                         </div>
                     </div>

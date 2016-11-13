@@ -3,6 +3,7 @@ import { Router, Route, browserHistory } from 'react-router';
 import {AuthUtils} from '../utils/AuthUtils';
 
 import { HomePage, LenderPage, AboutPage, FAQPage,
+         FeedbackPage,
          RegistrationPage, OfferListPage,
          OfferPage, OfferCreatePage, MyOfferListPage,
          TestPage, UserProfilePage, LogoutPage, LoginPage,
@@ -20,6 +21,7 @@ export default class AppRouter extends Component {
                     <Route component={HomePage}         path="/"/>
                     <Route component={LenderPage}       path="/lender"/>
                     <Route component={AboutPage}        path="/about"/>
+                    <Route component={FeedbackPage}     path="/feedback"/>
                     <Route component={FAQPage}          path="/faq(/:class)(/:method)"/>
 
                     <Route component={OfferListPage}    path="/offers/:type(/:amount)(/:period)(/:rate)"    onEnter={checkAuth}/>

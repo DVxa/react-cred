@@ -10,7 +10,7 @@ export default class MainMenu extends Component {
         return (
             <div className="wrapper clearfix">
                 <Paper>
-                    <ul className="top-menu elem3 clearfix">
+                    <ul className="top-menu elem4 clearfix">
                         {/*<li className="">
                             <Link to="/test">Тестовая</Link>
                         </li>*/}
@@ -22,6 +22,9 @@ export default class MainMenu extends Component {
                         </li>
                         <li className="">
                             <Link to="/faq">Вопрос-Ответ</Link>
+                        </li>
+                        <li className="">
+                            <Link to="/feedback">Обратная связь</Link>
                         </li>
                     </ul>
                 </Paper>

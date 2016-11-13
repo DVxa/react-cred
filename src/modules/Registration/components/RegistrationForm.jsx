@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Checkbox from 'material-ui/Checkbox';
 import {browserHistory} from 'react-router';
-import * as RegistrationActions from '../RegistrationActions';
+import * as RegistrationActions from '../../../actions/RegistrationActions';
 
 
 class RegistrationForm extends Component {

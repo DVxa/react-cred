@@ -31,79 +31,95 @@ export default class LeftMenu extends Component {
     }
 
     render() {
-        return (
-            <div>
-                <List style={{borderRight: "solid 1px rgb(76, 175, 80)", backgroundColor: 'white'}}>
+        if (!AuthUtils.isTokenExist()) {
+            return (
+                <List style={styles.leftMenu}>
                     <Subheader>Заявки</Subheader>
                     <Link to="/offer/new/borrow">
-                        <ListItem primaryText="Создать заявку на заем"
-                                  leftIcon={<OfferAdd />}
-                        />
+                        <ListItem primaryText="Создать заявку на заем" leftIcon={<OfferAdd />} />
                     </Link>
                     <Link to="/offer/new/lend">
-                        <ListItem primaryText="Создать предложение"
-                                  leftIcon={<OfferAdd />}
-                        />
+                        <ListItem primaryText="Создать предложение" leftIcon={<OfferAdd />} />
                     </Link>
-                    { AuthUtils.isTokenExist() && (
-                        <div>
-                            <Link to="/myoffers/borrow">
-                                <ListItem primaryText="Список моих заявок"
-                                          rightIcon={<Badge badgeContent={2} secondary={true} />}
-                                          leftIcon={<ListIco />}
-                                />
-                            </Link>
-                            <Link to="/offers/borrow"><ListItem primaryText="Заявки на заем" leftIcon={<ListIco />} /></Link>
-                            <Link to="/offers/lend"><ListItem primaryText="Предложения" leftIcon={<ListIco />} /></Link>
-                        </div>
-                    )}
-                    <Divider />
-                    { AuthUtils.isTokenExist() && (
-                        <div>
-                            <Subheader>Мои сделки</Subheader>
-                                <Link to="/mydeals/borrow">
-                                    <ListItem primaryText="По займам" r
-                                              rightIcon={<Badge badgeContent={3} secondary={true} />}
-                                              leftIcon={<DealDownIco />}
-                                    />
-                                </Link>
-                                <Link to="/mydeals/lend">
-                                    <ListItem primaryText="По размещению"
-                                              leftIcon={<DealUpIco />}
-                                              rightIcon={<Badge badgeContent={1} secondary={true} />}
-                                    />
-                                </Link>
-                        </div>
-                        )}
                     <Divider />
                     <Subheader>Учетные</Subheader>
-                    { !AuthUtils.isTokenExist() && (
-                        <div>
-                            <Link to="/login"><ListItem primaryText="Вход в систему" leftIcon={<Login />} /></Link>
-                            <Link to="/register"><ListItem primaryText="Регистрация" leftIcon={<Register />} /></Link>
-                        </div>
-                    )}
-                    { AuthUtils.isTokenExist() && (
-                        <div>
-                            <Link to="/profile"><ListItem primaryText="Профиль" leftIcon={<UserProfile />} /></Link>
-                            <Link to="/messages">
-                                <ListItem primaryText="Сообщения"
-                                          rightIcon={<Badge badgeContent={1} primary={true} />}
-                                          leftIcon={<MessIco />}
-                                />
-                            </Link>
-                            <Link to="/alerts">
-                                <ListItem primaryText="Уведомления"
-                                          rightIcon={<Badge badgeContent={3} primary={true} />}
-                                          leftIcon={<AlertIco />}
-                                />
-                            </Link>
-                            <Link to="/settings"><ListItem primaryText="Настройки" leftIcon={<UserSettings />} /></Link>
-                            <Link to="/logout"><ListItem primaryText="Выход" leftIcon={<UserLogOut />} /></Link>
-                        </div>
-                        ) }
+                    <Link to="/login">
+                        <ListItem primaryText="Вход в систему"      leftIcon={<Login />} />
+                    </Link>
+                    <Link to="/register">
+                        <ListItem primaryText="Регистрация"         leftIcon={<Register />} />
+                    </Link>
                 </List>
-            </div>
+            )
+        }
+
+        return (
+            <List style={styles.leftMenu}>
+                <Subheader>Заявки</Subheader>
+                <Link to="/offer/new/borrow">
+                    <ListItem primaryText="Создать заявку на заем"  leftIcon={<OfferAdd />} />
+                </Link>
+                <Link to="/offer/new/lend">
+                    <ListItem primaryText="Создать предложение"     leftIcon={<OfferAdd />}/>
+                </Link>
+                <Link to="/myoffers/borrow">
+                    <ListItem primaryText="Список моих заявок"
+                              rightIcon={<Badge badgeContent={2} secondary={true} />}
+                              leftIcon={<ListIco />}
+                    />
+                </Link>
+                <Link to="/offers/borrow">
+                    <ListItem primaryText="Заявки на заем"          leftIcon={<ListIco />} />
+                </Link>
+                <Link to="/offers/lend">
+                    <ListItem primaryText="Предложения"             leftIcon={<ListIco />} />
+                </Link>
+                <Divider />
+                <Subheader>Мои сделки</Subheader>
+                <Link to="/mydeals/borrow">
+                     <ListItem primaryText="По займам"
+                               rightIcon={<Badge badgeContent={3} secondary={true} />}
+                               leftIcon={<DealDownIco />}
+                     />
+                </Link>
+                <Link to="/mydeals/lend">
+                    <ListItem primaryText="По размещению"
+                              leftIcon={<DealUpIco />}
+                              rightIcon={<Badge badgeContent={1} secondary={true} />}
+                    />
+                </Link>
+                <Divider />
+                <Subheader>Учетные</Subheader>
+                <Link to="/profile">
+                    <ListItem primaryText="Профиль"                 leftIcon={<UserProfile />} />
+                </Link>
+                <Link to="/messages">
+                    <ListItem primaryText="Сообщения"
+                              rightIcon={<Badge badgeContent={1} primary={true} />}
+                              leftIcon={<MessIco />}
+                    />
+                </Link>
+                <Link to="/alerts">
+                    <ListItem primaryText="Уведомления"
+                              rightIcon={<Badge badgeContent={3} primary={true} />}
+                              leftIcon={<AlertIco />}
+                    />
+                </Link>
+                <Link to="/settings">
+                    <ListItem primaryText="Настройки"               leftIcon={<UserSettings />} />
+                </Link>
+                <Link to="/logout">
+                    <ListItem primaryText="Выход"                   leftIcon={<UserLogOut />} />
+                </Link>
+            </List>
         )
     }
 }
+
+
+const styles = {
+    leftMenu: {
+        borderRight: "solid 1px rgb(76, 175, 80)",
+        backgroundColor: 'white'
+    }
+};

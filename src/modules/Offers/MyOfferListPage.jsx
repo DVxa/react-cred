@@ -3,8 +3,11 @@
  */
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-
 import MyOfferListContent from "./components/MyOfferList/MyOfferListContent";
+
+// Const
+import {PATH_TO_SERVER} from '../../utils/Constants';
+
 
 export default class MyOfferListPage extends Component {
     constructor(props) {
@@ -56,7 +59,10 @@ export default class MyOfferListPage extends Component {
                         </div>
                     </div>
                 </div>
-                <MyOfferListContent offerType={this.props.params.type} />
+                <MyOfferListContent
+                    offerType={this.props.params.type}
+                    url={PATH_TO_SERVER + "request-loan/user-request/1"}
+                />
             </div>
         );
     }

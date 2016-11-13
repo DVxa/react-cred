@@ -5,13 +5,13 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import {Link} from 'react-router';
 
 import {Table, TableBody, TableFooter, TableHeader, TableHeaderColumn, TableRow, TableRowColumn}
     from 'material-ui/Table';
-import {Link} from 'react-router';
 import CircularProgress from 'material-ui/CircularProgress';
-import { ApiClient } from '../../../../utils/ApiClient';
-import * as MyDealListActions from './MyDealListActions';
+
+import * as MyDealListActions from '../../../../actions/MyDealListActions';
 
 class MyDealListTable extends Component {
 
@@ -36,7 +36,7 @@ class MyDealListTable extends Component {
 
     render () {
         let {deals} = this.props.list;
-        console.log(deals);
+
 
         if (deals.error) {
             console.error(deals.error);
@@ -45,7 +45,7 @@ class MyDealListTable extends Component {
 
         if (deals.fetching) {
             return (
-                <div style={{width: '100%', height: 200, textAlign: 'center', verticalAlign: 'middle'}}>
+                <div style={{width: '100%', height: 200, textAlign: 'center', padding: 120}}>
                     <CircularProgress />
                 </div>
             )
@@ -53,8 +53,9 @@ class MyDealListTable extends Component {
 
         return (
             <Table>
-                <TableHeader adjustForCheckbox={false}
-                             displaySelectAll={false}
+                <TableHeader
+                    adjustForCheckbox={false}
+                    displaySelectAll={false}
                 >
                     <TableRow>
                         <TableHeaderColumn>Сумма</TableHeaderColumn>

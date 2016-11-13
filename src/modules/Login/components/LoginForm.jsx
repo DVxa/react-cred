@@ -7,8 +7,13 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import Checkbox from 'material-ui/Checkbox';
 import {browserHistory} from 'react-router';
-import * as LoginActions from '../LoginActions';
+import * as LoginActions from '../../../actions/LoginActions';
 import {Link} from 'react-router';
+
+// Utils
+import {ApiClient} from '../../../utils/ApiClient';
+// Const
+import {PATH_TO_SERVER} from '../../../utils/Constants';
 
 
 class LoginForm extends Component {
@@ -28,37 +33,29 @@ class LoginForm extends Component {
         var body =
             'email=' + encodeURIComponent(email.value) +
             '&password=' + encodeURIComponent(password.value);
+        let url = PATH_TO_SERVER + "authentication";
 
-        console.log(body);
-/*
-        let promise = fetch (
-            'http://192.168.1.213:8077/user-profile/add-user',
-            {
-                method: 'post',
-                body: body,
-                headers: {
-                    "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-                }
-            }
-        ).then(
-            function(response) {
-                if (response.status !== 200) {
-                    console.log('Looks like there was a problem. Status Code: ' +
-                        response.status);
-                    return;
-                }
-                response.json().then(function (data) {
+        ApiClient.postNoAuth(url, body)
+            .then(
+                (data) => {
                     console.log(data);
-                    if (data.status == "OK") {
-                        alert ("Пользователь зарегистрирован в системе!");
-                        browserHistory.push('/registered');
+                    /*if (data.status) {
+                     localStorage.setItem('auth-token', result.hash);
+                     localStorage.setItem('uid', result.UID);
+                     this.setState({modalIsOpen: false});
+                     browserHistory.push('/myoffers/borrow');
+                     } else {
+                     //console.error(result.error);
+                     this.setState({error: "Ошибка соединения с сервером"})
+                     }*/
+                    if (data){
+                        localStorage.setItem('auth-token', data.hash);
+                        localStorage.setItem('uid', data.UID);
+                        this.setState({modalIsOpen: false});
+                        browserHistory.push('/myoffers/borrow');
                     }
-                });
-            }
-        ).catch(function(err) {
-            console.log('Fetch Error: ', err);
-        });
-*/
+                }
+            );
     };
 
     render() {
@@ -98,12 +95,12 @@ class LoginForm extends Component {
                 <div className="row">
                     <div className="col-xs-6">
                         <div className="row-padding">
-                            <Link to="/remind-password" className="gray-link">Забыли логин или пароль?</Link>
+                            <Link to="/remind-password" className="gray-link">Забыли пароль?</Link>
                         </div>
                     </div>
                     <div className="col-xs-4 button-container">
                         <RaisedButton
-                            label="Вход в систему"
+                            label="Войти"
                             onClick={this.onLoginButtonClickHandler}
                             secondary={true}
                             disabled={!email.valid || !password.valid}

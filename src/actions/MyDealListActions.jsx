@@ -3,10 +3,7 @@
  */
 
 
-import {ApiClient} from '../../../../utils/ApiClient'
-
-const GET_DATA_REQUEST = 'GET_DATA_REQUEST';
-const GET_DATA_SUCCESS = 'GET_DATA_SUCCESS ';
+import {ApiClient} from '../utils/ApiClient'
 
 export function setType(value) {
     return {
@@ -30,13 +27,12 @@ export function getDealData(url) {
                     type: 'GET_DEALS_SUCCESS',
                     payload: data
                 })
-            })
-            .catch((err) =>
+            }, (error) =>
                 dispatch({
                     type: 'GET_DEALS_ERROR',
-                    payload: err,
+                    payload: error,
                     error: true
                 })
-           );
+            );
     }
 }
